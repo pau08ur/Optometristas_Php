@@ -1,0 +1,73 @@
+
+:root {
+    --bg-body:#0a4f77 ;
+    --bg-cont:#0a4f77 ;
+    --bg-active:#0a4f77 ;
+}    
+* {
+    margin: 100;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.tab-container {
+   width: 100%;
+   box-shadow: 3px 5px 10px rgba(0, 0, 0, .8);
+   border-radius: 5px;
+   overflow: hidden;
+   margin-top: 40px;
+   margin-bottom: 40px;
+
+}
+.option-active {
+    background: var(--bg-active);
+    border-bottom: 1px solid rgba(7, 63 95,.4);
+}
+.options {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    list-style: none;
+}
+
+.option {
+    flex-grow: 0.5;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    color: rgb(53, 123, 148);
+    
+}
+
+.contents {
+    width: 100%;
+    height: 85%;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: none;
+    padding: 20px;
+}
+
+.content-active {
+    background: var(--bg-body);
+    display: block;
+}
+
+.content h3 {
+    text-align: center;
+    padding-bottom:  10px;
+    border-bottom: solid 1px rgba(255, 255, 255, .3);
+    letter-spacing: 2px;
+    margin: 10px;
+}
+body {
+    cursor: none;
+}
+body {
+    width: 960px; /* O el ancho deseado en píxeles */
+    margin: 0 auto; /* Centra la página horizontalmente */
+}
