@@ -924,7 +924,7 @@ $suc = $_POST['suc'];
               $pdf->SetXY(5, 217);
               $pdf->Cell(20, 20, "Tratamientos: ", 0, 0);
               $pdf->SetXY(20.5, 226.5);
-              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($campo['ar_ultra'])), 0, 0);
+              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($campo['tra'])), 0, 0);
 
 
               $pdf->SetFont('Arial', '', '8.5');
