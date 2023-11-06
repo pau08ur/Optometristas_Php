@@ -910,19 +910,19 @@ $suc = $_POST['suc'];
 
               $pdf->SetFont('Arial', '', '8.5');
               $pdf->SetXY(5, 197);
-              $pdf->Cell(20, 20, "ARO: ", 0, 0);
+              $pdf->Cell(20, 20, "Aro: ", 0, 0);
               $pdf->SetFont('Arial', '', '8.5');
               $pdf->SetXY(12, 206.5);
               $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($campo['aro'])) . "-" . ($row6[0]), 0, 0);
 
               $pdf->SetXY(5, 207);
-              $pdf->Cell(20, 20, "LENTES: ", 0, 0);
+              $pdf->Cell(20, 20, "Lentes: ", 0, 0);
               $pdf->SetXY(17, 216.5);
-              $pdf->Cell(88, 1, " " . strtoupper(wordwrap(utf8_decode($campo['lentes']))), 0, 0);
+              $pdf->Cell(88, 1, " " . strtoupper(wordwrap(utf8_decode($campo['len']))), 0, 0);
 
 
               $pdf->SetXY(5, 217);
-              $pdf->Cell(20, 20, "AR ULTRA: ", 0, 0);
+              $pdf->Cell(20, 20, "Tratamientos: ", 0, 0);
               $pdf->SetXY(20.5, 226.5);
               $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($campo['ar_ultra'])), 0, 0);
 
@@ -2656,24 +2656,24 @@ Tabla distancias css
                                                       <option value="-0.50">-0.50</option>
                                                       <option value="-0.75">-0.75</option>
                                                       <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
+                                                      <option value="+0.25">+0.25</option>
                                                       <option value="+0.50">+0.50</option>
                                                       <option value="+0.75">+0.75</option>
                                                       <option value="+100">+100</option>
-                                                    </select></td> 
+                                                      </select></td> 
       <td class="td-refra-f"><select name="altura_i" id="altura_i" class="select-td">
                                                     <option value="-0.25">-0.25</option>
                                                       <option value="-0.50">-0.50</option>
                                                       <option value="-0.75">-0.75</option>
                                                       <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
+                                                      <option value="+0.25">+0.25</option>
                                                       <option value="+0.50">+0.50</option>
                                                       <option value="+0.75">+0.75</option>
                                                       <option value="+100">+100</option>
-                                                    </select></td> 
-                                                    <select name="tipo_f" id="tipo_f" hidden>
+                                                      </select></td> 
+                                                      <select name="tipo_f" id="tipo_f" hidden>
                                                       <option value="Receta_Final"></option>
-                                                    </select>
+                                                      </select>
       </tr>
     </tbody>
   </table>

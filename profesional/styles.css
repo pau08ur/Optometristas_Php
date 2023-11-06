@@ -64,10 +64,3 @@
     letter-spacing: 2px;
     margin: 10px;
 }
-body {
-    cursor: none;
-}
-body {
-    width: 960px; /* O el ancho deseado en píxeles */
-    margin: 0 auto; /* Centra la página horizontalmente */
-}

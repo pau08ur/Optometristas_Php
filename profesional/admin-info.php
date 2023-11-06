@@ -8,8 +8,6 @@
       include("abrir.php");
       require('../fpdf/fpdf.php');
 
-
-      //DATOS CON LOS QUE SE FILTRA LA INFORMACION
       $nombre = $_POST['nombre'];
       $cedula = $_POST['cedpaciente2'];
       $pro = $_POST['pro'];
@@ -22,7 +20,7 @@
       $pdf->AddPage();
       
       
-    //SCRIPTS DE SQL
+    
       $paciente = "SELECT codigo_tratamiento,fecha_tratamiento,nombre,edad,numero,email,ocupacion,cedula,direccion,fecha_nacimiento,sucursal,profesional from paciente where nombre like '%".$nombre."%' and cedula = '".$cedula."'";
       $sql = mysqli_query($conexion,$paciente);
   
@@ -781,21 +779,21 @@
         
         $pdf->SetFont('Arial','','8.5');
         $pdf->SetXY(5,197);
-        $pdf->Cell(20,20,"ARO: ",0,0);
+        $pdf->Cell(20,20,"Aro: ",0,0);
         $pdf->SetFont('Arial','','8.5');
         $pdf->SetXY(12,206.5);
         $pdf->Cell(88,1," ".wordwrap(utf8_decode($campo['aro']))."-".($row6[0]),0,0);
         
         $pdf->SetXY(5,207);
-        $pdf->Cell(20,20,"LENTES: ",0,0);
+        $pdf->Cell(20,20,"Lentes: ",0,0);
         $pdf->SetXY(17,216.5);
-        $pdf->Cell(88,1," ".strtoupper(wordwrap(utf8_decode($campo['lentes']))),0,0);
+        $pdf->Cell(88,1," ".strtoupper(wordwrap(utf8_decode($campo['len']))),0,0);
         
         
         $pdf->SetXY(5,217);
-        $pdf->Cell(20,20,"AR ULTRA: ",0,0);
+        $pdf->Cell(20,20,"Tratamientos: ",0,0);
         $pdf->SetXY(20.5,226.5);
-        $pdf->Cell(88,1," ".wordwrap(utf8_decode($campo['ar_ultra'])),0,0);
+        $pdf->Cell(88,1," ".wordwrap(utf8_decode($campo['tra'])),0,0);
         
         
         $pdf->SetFont('Arial','','8.5');
@@ -838,7 +836,7 @@
     }
   }
 }
-$pdf->Output('D');
+$pdf->Output('');
       }
     
       ob_end_flush();
@@ -858,6 +856,7 @@ $pdf->Output('D');
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.csss">
+    <link rel="stylesheet" href="../css/css2.css">
 
 </head>
 <style>
@@ -871,7 +870,7 @@ input{
 
 }
 body{
-background:  white;
+background:  whitesmoke;
 font-family: Arial, Helvetica , sans-serif;
 }
 .card{
@@ -1471,7 +1470,6 @@ Tabla distancias css
     <?php
       	if(isset($_POST["buscar"])) 
         {
-           //VISTA Y LLAMDO DE LOS DATOS DE LA BASEW DE DATOS AL FORMULARIO FILTRADO POR CEDULA Y NOMBRE
           include("abrir.php");
 
   
@@ -1622,7 +1620,10 @@ Tabla distancias css
                        </div>
                    </div>
                    </div>
-            
+
+
+
+                   
             <div id="content2" class="content">
             <div class="container">
               <div class="row">
@@ -2016,6 +2017,7 @@ $pro = $_POST['pro'];
 </select>
 <?php
  include("abrir.php");
+
 function MantenerDatos($boton)
 {
     $var1 = "";
@@ -2032,6 +2034,8 @@ function MantenerDatos($boton)
  
     return $var1;
 }
+
+
 ?>
 </body>
 </html>
