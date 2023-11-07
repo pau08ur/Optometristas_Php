@@ -1,12 +1,11 @@
-
 <?php
 // INICIA LA SESION
 session_start();
- 
+
 // VERIFICA QUE LA SESION ESTE INICIADA, DE LO CONTRARIO LO REENVIA A LA PAGINA DEL LOGIN
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: form.php");
-    exit;
+  header("location: form.php");
+  exit;
 }
 ?>
 
@@ -14,236 +13,236 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 <!DOCTYPE html>
 
 <select name="" id="" hidden>
-<?php
-$pro = $_POST['pro'];
-?>
+  <?php
+  $pro = $_POST['pro'];
+  ?>
 </select>
 
 <select name="" id="" hidden>
-<?php
-$suc = $_POST['suc'];
-?>
+  <?php
+  $suc = $_POST['suc'];
+  ?>
 </select>
 <?php
-    if (isset($_POST['inicial'])) {
+if (isset($_POST['inicial'])) {
 
-      //TODAS SON VARIABLES QUE ESTAN ENLAZADAS POR MEDIO DEL POST CON SU RESPECTIVO INPUT O SELECT-OPTION
-      //INSERTAR DATOS EN BASE DE DATOS 
+  //TODAS SON VARIABLES QUE ESTAN ENLAZADAS POR MEDIO DEL POST CON SU RESPECTIVO INPUT O SELECT-OPTION
+  //INSERTAR DATOS EN BASE DE DATOS 
 
-      include("abrir.php");
-      require('../fpdf/fpdf.php');
-      date_default_timezone_set("America/Costa_Rica");
-      $Fecha = date('Y-m-d H:i');
-      $esfd = $_POST['esf_d'];
-      $cild = $_POST['cil_d'];
-      $ejed = $_POST['eje_d'];
-      $addd = $_POST['add_d'];
-      $avlejosd = $_POST['av_lejos_d'];
-      $avcercad = $_POST['av_cerca_d'];
-      $esfi = $_POST['esf_i'];
-      $cili = $_POST['cil_i'];
-      $ejei = $_POST['eje_i'];
-      $addi = $_POST['add_i'];
-      $avlejosi = $_POST['av_lejos_i'];
-      $avcercai = $_POST['av_cerca_i'];
-      $tipo = $_POST['tipo'];
-
-
-      
-      $esfd_ob = $_POST['esf_d_ob'];
-      $cild_ob = $_POST['cil_d_ob'];
-      $ejed_ob = $_POST['eje_d_ob'];
-      $addd_ob = $_POST['add_d_ob'];
-      $avlejosd_ob = $_POST['av_lejos_d_ob'];
-      $avcercad_ob = $_POST['av_cerca_d_ob'];
-      $esfi_ob = $_POST['esf_i_ob'];
-      $cili_ob = $_POST['cil_i_ob'];
-      $ejei_ob = $_POST['eje_i_ob'];
-      $addi_ob = $_POST['add_i_ob'];
-      $avlejosi_ob = $_POST['av_lejos_i_ob'];
-      $avcercai_ob = $_POST['av_cerca_i_ob'];
-      $tipo_ob = $_POST['tipo_ob'];
-
-
-      $esfd_sub = $_POST['esf_d_sub'];
-      $cild_sub = $_POST['cil_d_sub'];
-      $ejed_sub = $_POST['eje_d_sub'];
-      $addd_sub = $_POST['add_d_sub'];
-      $avlejosd_sub = $_POST['av_lejos_d_sub'];
-      $avcercad_sub = $_POST['av_cerca_d_sub'];
-      $esfi_sub = $_POST['esf_i_sub'];
-      $cili_sub = $_POST['cil_i_sub'];
-      $ejei_sub = $_POST['eje_i_sub'];
-      $addi_sub = $_POST['add_i_sub'];
-      $avlejosi_sub = $_POST['av_lejos_i_sub'];
-      $avcercai_sub = $_POST['av_cerca_i_sub'];
-      $tipo_sub = $_POST['tipo_sub'];
-
-      $esfd_f = $_POST['esf_d_f'];
-      $cild_f = $_POST['cil_d_f'];
-      $ejed_f = $_POST['eje_d_f'];
-      $addd_f = $_POST['add_d_f'];
-      $avccd = $_POST['av_cc_d'];
-      $avcci = $_POST['av_cc_i'];
-      $esfi_f = $_POST['esf_i_f'];
-      $cili_f = $_POST['cil_i_f'];
-      $ejei_f = $_POST['eje_i_f'];
-      $addi_f = $_POST['add_i_f'];
-      $dnpi = $_POST['dnp_i'];
-      $dnpd = $_POST['dnp_d'];
-      $alturai = $_POST['altura_i'];
-      $alturad = $_POST['altura_d'];
-      $tipo_f = $_POST['tipo_f'];
-  
-      $cover_test = $_POST['cover_test'];
-      $observaciones_clinicas = $_POST['observaciones_clinicas'];
-      $dist_vert = $_POST['dist_vert'];
-      $ang_pant = $_POST['ang_pant'];
-      $ang_facial = $_POST['ang_facial'];
-      $radio = $_POST['radio'];
-      $diagnostico = $_POST['diagnostico'];
+  include("abrir.php");
+  require('../fpdf/fpdf.php');
+  date_default_timezone_set("America/Costa_Rica");
+  $Fecha = date('Y-m-d H:i');
+  $esfd = $_POST['esf_d'];
+  $cild = $_POST['cil_d'];
+  $ejed = $_POST['eje_d'];
+  $addd = $_POST['add_d'];
+  $avlejosd = $_POST['av_lejos_d'];
+  $avcercad = $_POST['av_cerca_d'];
+  $esfi = $_POST['esf_i'];
+  $cili = $_POST['cil_i'];
+  $ejei = $_POST['eje_i'];
+  $addi = $_POST['add_i'];
+  $avlejosi = $_POST['av_lejos_i'];
+  $avcercai = $_POST['av_cerca_i'];
+  $tipo = $_POST['tipo'];
 
 
 
-      $nombre = $_POST['nombre'];
-      $edad = $_POST['edad'];
-      $numero = $_POST['numero'];
-      $email = $_POST['email'];
-      $ocupacion = $_POST['ocupacion'];
-      $cedula = $_POST['cedpaciente2'];
-      $direccion = $_POST['direccion'];
-      $fecha_nacimiento = $_POST['fecha_nacimiento'];
-      $salud_general = $_POST['salud_general'];
-      $alergias = $_POST['alergias'];
-      $toma_medicamentos = $_POST['toma_medicamentos'];
-      $cirugias_oculares = $_POST['cirugias_oculares'];
-      $tratamiento = $_POST['tratamiento_oftalmologico'];
-      $observaciones = $_POST['observaciones'];
-      $motivo_consulta = $_POST['motivo_consulta'];
-      $ultimo_examen = $_POST['ultimo_examen'];
-      $sintomas_astenopticos = $_POST['sintomas_astenopticos'];
-      $sucursal = $_POST['sucursal'];
-      $cornea_i = $_POST['cornea_i'];
-      $cornea_d = $_POST['cornea_d'];
-      $cristalino_i = $_POST['cristalino_i'];
-      $cristalino_d = $_POST['cristalino_d'];
-      $fo_i = $_POST['fo_i'];
-      $fo_d = $_POST['fo_d'];
+  $esfd_ob = $_POST['esf_d_ob'];
+  $cild_ob = $_POST['cil_d_ob'];
+  $ejed_ob = $_POST['eje_d_ob'];
+  $addd_ob = $_POST['add_d_ob'];
+  $avlejosd_ob = $_POST['av_lejos_d_ob'];
+  $avcercad_ob = $_POST['av_cerca_d_ob'];
+  $esfi_ob = $_POST['esf_i_ob'];
+  $cili_ob = $_POST['cil_i_ob'];
+  $ejei_ob = $_POST['eje_i_ob'];
+  $addi_ob = $_POST['add_i_ob'];
+  $avlejosi_ob = $_POST['av_lejos_i_ob'];
+  $avcercai_ob = $_POST['av_cerca_i_ob'];
+  $tipo_ob = $_POST['tipo_ob'];
 
-      $aro = $_POST['aro'];
-      $lentes = $_POST['lentes'];
-      $ar_ultra = $_POST['ar_ultra'];
 
-      $pro = $_POST['pro'];
-    
-      //CONSULTAS DE INSERCCIONQ QUE SE GENERAN UNA VEZ CUMPLIDA LA CONDICION 
+  $esfd_sub = $_POST['esf_d_sub'];
+  $cild_sub = $_POST['cil_d_sub'];
+  $ejed_sub = $_POST['eje_d_sub'];
+  $addd_sub = $_POST['add_d_sub'];
+  $avlejosd_sub = $_POST['av_lejos_d_sub'];
+  $avcercad_sub = $_POST['av_cerca_d_sub'];
+  $esfi_sub = $_POST['esf_i_sub'];
+  $cili_sub = $_POST['cil_i_sub'];
+  $ejei_sub = $_POST['eje_i_sub'];
+  $addi_sub = $_POST['add_i_sub'];
+  $avlejosi_sub = $_POST['av_lejos_i_sub'];
+  $avcercai_sub = $_POST['av_cerca_i_sub'];
+  $tipo_sub = $_POST['tipo_sub'];
 
-      $paciente = $conexion->query("INSERT INTO paciente (nombre,edad,numero,email,ocupacion,cedula,direccion,fecha_nacimiento,sucursal,fecha_tratamiento,profesional) VALUES ('$nombre', '$edad', '$numero', '$email','$ocupacion','$cedula','$direccion','$fecha_nacimiento','$sucursal','$Fecha','$pro')");     
-    if ($paciente == true) {
-      $antecedentes = $conexion->query("INSERT INTO antecedentes (codigo_trata_antecedentes,salud_general,alergias,toma_medicamentos,cirugias_oculares,tratamiento_oftalmologico,observaciones,motivo_consulta,ultimo_examen,sintomas_astenopticos) VALUES (LAST_INSERT_ID(),'$salud_general','$alergias','$toma_medicamentos','$cirugias_oculares','$tratamiento','$observaciones','$motivo_consulta','$ultimo_examen','$sintomas_astenopticos')");     
-    }
-    if ($antecedentes == true) {
-      $examen = $conexion->query("INSERT INTO examen_externo (codigo_trata_examen,cornea_i,cornea_d,cristalino_i,cristalino_d,fo_i,fo_d) VALUES (LAST_INSERT_ID(),'$cornea_i','$cornea_d','$cristalino_i','$cristalino_d','$fo_i','$fo_d')");     
-    }
-      if ($examen == true) {
-        $lensometria_inicial = $conexion->query("INSERT INTO lensometria_inicial (codigo_trata,esf_d,cil_d,eje_d,add_d,av_lejos_d,av_cerca_d,esf_i,cil_i,eje_i,add_i,av_lejos_i,av_cerca_i,tipo) values (LAST_INSERT_ID(),'$esfd','$cild','$ejed','$addd','$avlejosd','$avcercad','$esfi','$cili','$ejei','$addi','$avlejosi','$avcercai','$tipo')"); 
-    }
-    if ($lensometria_inicial = true) {
-        $lensometria_objetiva = $conexion->query("INSERT INTO lensometria_objetiva (codigo_trata_ob,esf_d_ob,cil_d_ob,eje_d_ob,add_d_ob,av_lejos_d_ob,av_cerca_d_ob,esf_i_ob,cil_i_ob,eje_i_ob,add_i_ob,av_lejos_i_ob,av_cerca_i_ob,tipo_ob) values (LAST_INSERT_ID(),'$esfd_ob','$cild_ob','$ejed_ob','$addd_ob','$avlejosd_ob','$avcercad_ob','$esfi_ob','$cili_ob','$ejei_ob','$addi_ob','$avlejosi_ob','$avcercai_ob','$tipo_ob') "); 
-    }
-      if ($lensometria_objetiva = true) {
-        $lensometria_subjetiva = $conexion->query("INSERT INTO lensometria_subjetiva (codigo_trata_sub,esf_d_sub,cil_d_sub,eje_d_sub,add_d_sub,av_lejos_d_sub,av_cerca_d_sub,esf_i_sub,cil_i_sub,eje_i_sub,add_i_sub,av_lejos_i_sub,av_cerca_i_sub,tipo_sub) values (LAST_INSERT_ID(),'$esfd_sub','$cild_sub','$ejed_sub','$addd_sub','$avlejosd_sub','$avcercad_sub','$esfi_sub','$cili_sub','$ejei_sub','$addi_sub','$avlejosi_sub','$avcercai_sub','$tipo_sub') "); 
-    }
-       if ($lensometria_subjetiva = true) {
-        $lensometria_receta_final = $conexion->query("INSERT INTO lensometria_receta_final (codigo_trata_f,esf_d_f,cil_d_f,eje_d_f,add_d_f,av_cc_d,dnp_d,altura_d,esf_i_f,cil_i_f,eje_i_f,add_i_f,av_cc_i,dnp_i,altura_i,tipo_f,diagnostico,aro,lentes,ar_ultra) values (LAST_INSERT_ID(),'$esfd_f','$cild_f','$ejed_f','$addd_f','$avccd','$dnpd','$alturad','$esfi_f','$cili_f','$ejei_f','$addi_f','$avcci','$dnpi','$alturai','$tipo_f','$diagnostico','$aro','$lentes','$ar_ultra') "); 
-    }
-    if ($lensometria_receta_final = true) {
-        $lensometria = $conexion->query("INSERT INTO lensometria (codigo_trata_lensometria,dist_vert,ang_pant,ang_facial,cover_test,observaciones_clinicas,distancia_vista) values (LAST_INSERT_ID(),'$dist_vert','$ang_pant','$ang_facial','$cover_test','$observaciones_clinicas','$radio') "); 
-    }
-  
-    //INICIO DE GENERACIUON DEL PDF
-      ob_start();
+  $esfd_f = $_POST['esf_d_f'];
+  $cild_f = $_POST['cil_d_f'];
+  $ejed_f = $_POST['eje_d_f'];
+  $addd_f = $_POST['add_d_f'];
+  $avccd = $_POST['av_cc_d'];
+  $avcci = $_POST['av_cc_i'];
+  $esfi_f = $_POST['esf_i_f'];
+  $cili_f = $_POST['cil_i_f'];
+  $ejei_f = $_POST['eje_i_f'];
+  $addi_f = $_POST['add_i_f'];
+  $dnpi = $_POST['dnp_i'];
+  $dnpd = $_POST['dnp_d'];
+  $alturai = $_POST['altura_i'];
+  $alturad = $_POST['altura_d'];
+  $tipo_f = $_POST['tipo_f'];
 
-      $pdf = new FPDF('P', 'mm', 'A4');
-      $pdf->AddPage();
-      
-    
-    //CONSULTAS PARA LLAMAR LOS REGISTROS DE LA BASE DE DATOS
-      $paciente = "SELECT codigo_tratamiento,fecha_tratamiento,nombre,edad,numero,email,ocupacion,cedula,direccion,fecha_nacimiento,sucursal,profesional from paciente where nombre like '%" . $nombre . "%' and cedula = '" . $cedula . "'";
-      $sql = mysqli_query($conexion, $paciente);
-  
-      $antecedentes = "SELECT salud_general,alergias,toma_medicamentos,cirugias_oculares,tratamiento_oftalmologico,observaciones,motivo_consulta,ultimo_examen,sintomas_astenopticos from antecedentes a inner join paciente p on p.codigo_tratamiento = a.codigo_trata_antecedentes where nombre like '%" . $nombre . "%' and cedula = '" . $cedula . "'";
-      $sql3 = mysqli_query($conexion, $antecedentes);
-  
-      $examen = "SELECT cornea_i,cornea_d,cristalino_i,cristalino_d,fo_i,fo_d from examen_externo e inner join paciente p on p.codigo_tratamiento = e.codigo_trata_examen where nombre like '%" . $nombre . "%' and cedula = '" . $cedula . "'";
-      $sql4 = mysqli_query($conexion, $examen);
-  
-      $receta_final = mysqli_query($conexion, "SELECT esf_d_f,cil_d_f,eje_d_f,add_d_f,av_cc_d,dnp_d,altura_d,esf_i_f,cil_i_f,eje_i_f,add_i_f,av_cc_i,dnp_i,altura_i,aro,lentes,ar_ultra from lensometria_receta_final f inner join paciente p on f.codigo_trata_f = p.codigo_tratamiento where p.nombre like '%" . $nombre . "%' and p.cedula = '" . $cedula . "'");
-      $filas = mysqli_num_rows($receta_final);
-  
-      $receta_inicial = mysqli_query($conexion, "SELECT esf_d,cil_d,eje_d,add_d,av_lejos_d,av_cerca_d,esf_i,cil_i,eje_i,add_i,av_lejos_i,av_cerca_i from lensometria_inicial i inner join paciente p on i.codigo_trata = p.codigo_tratamiento where p.nombre like '%" . $nombre . "%' and p.cedula = '" . $cedula . "'");
-      $filas2 = mysqli_num_rows($receta_inicial);
-  
-      $receta_objetiva = mysqli_query($conexion, "SELECT esf_d_ob,cil_d_ob,eje_d_ob,add_d_ob,av_lejos_d_ob,av_cerca_d_ob,esf_i_ob,cil_i_ob,eje_i_ob,add_i_ob,av_lejos_i_ob,av_cerca_i_ob from lensometria_objetiva o inner join paciente p on o.codigo_trata_ob = p.codigo_tratamiento where p.nombre like '%" . $nombre . "%' and p.cedula = '" . $cedula . "'");
-      $filas3 = mysqli_num_rows($receta_objetiva);
-  
-      $receta_subjetiva = mysqli_query($conexion, "SELECT esf_d_sub,cil_d_sub,eje_d_sub,add_d_sub,av_lejos_d_sub,av_cerca_d_sub,esf_i_sub,cil_i_sub,eje_i_sub,add_i_sub,av_lejos_i_sub,av_cerca_i_sub from lensometria_subjetiva s inner join paciente p on s.codigo_trata_sub = p.codigo_tratamiento where p.nombre like '%" . $nombre . "%' and p.cedula = '" . $cedula . "'");
-      $filas4 = mysqli_num_rows($receta_subjetiva);
-  
-      $lensometria = mysqli_query($conexion, "SELECT dist_vert,ang_pant,ang_facial,cover_test,observaciones_clinicas,distancia_vista from lensometria l inner join paciente p on l.codigo_trata_lensometria = p.codigo_tratamiento where p.nombre like '%" . $nombre . "%' and p.cedula = '" . $cedula . "'");
-      $filas5 = mysqli_num_rows($lensometria);
-  
-      $diagnostico = "SELECT diagnostico from lensometria_receta_final f inner join paciente p on p.codigo_tratamiento = f.codigo_trata_f where nombre like '%" . $nombre . "%' and cedula = '" . $cedula . "'";
-      $sql2 = mysqli_query($conexion, $diagnostico);
-      
-      $profesional = "SELECT password,username from doctores  where username = '" . $pro . "'";
-      $sql5 = mysqli_query($conexion, $profesional);
+  $cover_test = $_POST['cover_test'];
+  $observaciones_clinicas = $_POST['observaciones_clinicas'];
+  $dist_vert = $_POST['dist_vert'];
+  $ang_pant = $_POST['ang_pant'];
+  $ang_facial = $_POST['ang_facial'];
+  $radio = $_POST['radio'];
+  $diagnostico = $_POST['diagnostico'];
 
-      $cod_lentes = "SELECT codigo from articulos  where descrip = '" . $aro . "'";
-      $sql6 = mysqli_query($conexion, $cod_lentes);
-      
-      if ($row = mysqli_fetch_row($sql)) {
-        if ($row3 = mysqli_fetch_row($sql3)) {
-          if ($row4 = mysqli_fetch_row($sql4)) {
-            if ($row5 = mysqli_fetch_row($sql5)) {
-              if ($row6 = mysqli_fetch_row($sql6)) {
-      $pdf->SetFont('Arial', '', '15');
-      
-      $pdf->SetTitle("OPTICAS MUNKEL");
-      
-      $pdf->SetTextColor(192, 57, 43);
-      $pdf->SetTextColor('0', '0', '0');
-      
-      $pdf->Cell(162, 5, "", 0, 0);
-      $pdf->Cell(58, 5, " " . str_replace('-', '/', date('d/m/Y', strtotime($row[1]))), 0, 1, 'L');
-      $pdf->SetFont('Arial', '', '8'); 
-      
-      $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\munke.png', 10, 2, 35, 20, 'PNG');
-      
-      $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\Zeiss-Logo.png', 43, 1, 35, 20, 'PNG');
-      
-      
-      $pdf->Ln(10);
-      $pdf->Line(10, 25, 200, 25);
-      
-      
-      
-      
-      $pdf->Ln(15);
-      
-      $pdf->Cell(5, -5, "", 0, 0);
-      $pdf->Cell(11, -15, "Nombre: ", 0, 0);
-      $pdf->Cell(104, -15, " " . wordwrap(utf8_decode($row[2])), 0, 0);
-      $pdf->Line(27, 34, 130, 34);
-      $pdf->Line(27, 34, 130, 34);
-      $pdf->Cell(6, -15, "Edad: ", 0, 0);
-      $pdf->Cell(58, -15, "   " . $row[3], 0, 1);
-      $pdf->Line(139, 34, 200, 34);
-      $pdf->Line(139, 34, 200, 34);
-      
-      $pdf->Ln(8);
-      
-      $pdf->Cell(5, 5, "", 0, 0);
+
+
+  $nombre = $_POST['nombre'];
+  $edad = $_POST['edad'];
+  $numero = $_POST['numero'];
+  $email = $_POST['email'];
+  $ocupacion = $_POST['ocupacion'];
+  $cedula = $_POST['cedpaciente2'];
+  $direccion = $_POST['direccion'];
+  $fecha_nacimiento = $_POST['fecha_nacimiento'];
+  $salud_general = $_POST['salud_general'];
+  $alergias = $_POST['alergias'];
+  $toma_medicamentos = $_POST['toma_medicamentos'];
+  $cirugias_oculares = $_POST['cirugias_oculares'];
+  $tratamiento = $_POST['tratamiento_oftalmologico'];
+  $observaciones = $_POST['observaciones'];
+  $motivo_consulta = $_POST['motivo_consulta'];
+  $ultimo_examen = $_POST['ultimo_examen'];
+  $sintomas_astenopticos = $_POST['sintomas_astenopticos'];
+  $sucursal = $_POST['sucursal'];
+  $cornea_i = $_POST['cornea_i'];
+  $cornea_d = $_POST['cornea_d'];
+  $cristalino_i = $_POST['cristalino_i'];
+  $cristalino_d = $_POST['cristalino_d'];
+  $fo_i = $_POST['fo_i'];
+  $fo_d = $_POST['fo_d'];
+
+  $aro = $_POST['aro'];
+  $lentes = $_POST['lentes'];
+  $ar_ultra = $_POST['ar_ultra'];
+
+  $pro = $_POST['pro'];
+
+  //CONSULTAS DE INSERCCIONQ QUE SE GENERAN UNA VEZ CUMPLIDA LA CONDICION 
+
+  $paciente = $conexion->query("INSERT INTO paciente (nombre,edad,numero,email,ocupacion,cedula,direccion,fecha_nacimiento,sucursal,fecha_tratamiento,profesional) VALUES ('$nombre', '$edad', '$numero', '$email','$ocupacion','$cedula','$direccion','$fecha_nacimiento','$sucursal','$Fecha','$pro')");
+  if ($paciente == true) {
+    $antecedentes = $conexion->query("INSERT INTO antecedentes (codigo_trata_antecedentes,salud_general,alergias,toma_medicamentos,cirugias_oculares,tratamiento_oftalmologico,observaciones,motivo_consulta,ultimo_examen,sintomas_astenopticos) VALUES (LAST_INSERT_ID(),'$salud_general','$alergias','$toma_medicamentos','$cirugias_oculares','$tratamiento','$observaciones','$motivo_consulta','$ultimo_examen','$sintomas_astenopticos')");
+  }
+  if ($antecedentes == true) {
+    $examen = $conexion->query("INSERT INTO examen_externo (codigo_trata_examen,cornea_i,cornea_d,cristalino_i,cristalino_d,fo_i,fo_d) VALUES (LAST_INSERT_ID(),'$cornea_i','$cornea_d','$cristalino_i','$cristalino_d','$fo_i','$fo_d')");
+  }
+  if ($examen == true) {
+    $lensometria_inicial = $conexion->query("INSERT INTO lensometria_inicial (codigo_trata,esf_d,cil_d,eje_d,add_d,av_lejos_d,av_cerca_d,esf_i,cil_i,eje_i,add_i,av_lejos_i,av_cerca_i,tipo) values (LAST_INSERT_ID(),'$esfd','$cild','$ejed','$addd','$avlejosd','$avcercad','$esfi','$cili','$ejei','$addi','$avlejosi','$avcercai','$tipo')");
+  }
+  if ($lensometria_inicial = true) {
+    $lensometria_objetiva = $conexion->query("INSERT INTO lensometria_objetiva (codigo_trata_ob,esf_d_ob,cil_d_ob,eje_d_ob,add_d_ob,av_lejos_d_ob,av_cerca_d_ob,esf_i_ob,cil_i_ob,eje_i_ob,add_i_ob,av_lejos_i_ob,av_cerca_i_ob,tipo_ob) values (LAST_INSERT_ID(),'$esfd_ob','$cild_ob','$ejed_ob','$addd_ob','$avlejosd_ob','$avcercad_ob','$esfi_ob','$cili_ob','$ejei_ob','$addi_ob','$avlejosi_ob','$avcercai_ob','$tipo_ob') ");
+  }
+  if ($lensometria_objetiva = true) {
+    $lensometria_subjetiva = $conexion->query("INSERT INTO lensometria_subjetiva (codigo_trata_sub,esf_d_sub,cil_d_sub,eje_d_sub,add_d_sub,av_lejos_d_sub,av_cerca_d_sub,esf_i_sub,cil_i_sub,eje_i_sub,add_i_sub,av_lejos_i_sub,av_cerca_i_sub,tipo_sub) values (LAST_INSERT_ID(),'$esfd_sub','$cild_sub','$ejed_sub','$addd_sub','$avlejosd_sub','$avcercad_sub','$esfi_sub','$cili_sub','$ejei_sub','$addi_sub','$avlejosi_sub','$avcercai_sub','$tipo_sub') ");
+  }
+  if ($lensometria_subjetiva = true) {
+    $lensometria_receta_final = $conexion->query("INSERT INTO lensometria_receta_final (codigo_trata_f,esf_d_f,cil_d_f,eje_d_f,add_d_f,av_cc_d,dnp_d,altura_d,esf_i_f,cil_i_f,eje_i_f,add_i_f,av_cc_i,dnp_i,altura_i,tipo_f,diagnostico,aro,lentes,ar_ultra) values (LAST_INSERT_ID(),'$esfd_f','$cild_f','$ejed_f','$addd_f','$avccd','$dnpd','$alturad','$esfi_f','$cili_f','$ejei_f','$addi_f','$avcci','$dnpi','$alturai','$tipo_f','$diagnostico','$aro','$lentes','$ar_ultra') ");
+  }
+  if ($lensometria_receta_final = true) {
+    $lensometria = $conexion->query("INSERT INTO lensometria (codigo_trata_lensometria,dist_vert,ang_pant,ang_facial,cover_test,observaciones_clinicas,distancia_vista) values (LAST_INSERT_ID(),'$dist_vert','$ang_pant','$ang_facial','$cover_test','$observaciones_clinicas','$radio') ");
+  }
+
+  //INICIO DE GENERACIUON DEL PDF
+  ob_start();
+
+  $pdf = new FPDF('P', 'mm', 'A4');
+  $pdf->AddPage();
+
+
+  //CONSULTAS PARA LLAMAR LOS REGISTROS DE LA BASE DE DATOS
+  $paciente = "SELECT codigo_tratamiento,fecha_tratamiento,nombre,edad,numero,email,ocupacion,cedula,direccion,fecha_nacimiento,sucursal,profesional from paciente where nombre like '%" . $nombre . "%' and cedula = '" . $cedula . "'";
+  $sql = mysqli_query($conexion, $paciente);
+
+  $antecedentes = "SELECT salud_general,alergias,toma_medicamentos,cirugias_oculares,tratamiento_oftalmologico,observaciones,motivo_consulta,ultimo_examen,sintomas_astenopticos from antecedentes a inner join paciente p on p.codigo_tratamiento = a.codigo_trata_antecedentes where nombre like '%" . $nombre . "%' and cedula = '" . $cedula . "'";
+  $sql3 = mysqli_query($conexion, $antecedentes);
+
+  $examen = "SELECT cornea_i,cornea_d,cristalino_i,cristalino_d,fo_i,fo_d from examen_externo e inner join paciente p on p.codigo_tratamiento = e.codigo_trata_examen where nombre like '%" . $nombre . "%' and cedula = '" . $cedula . "'";
+  $sql4 = mysqli_query($conexion, $examen);
+
+  $receta_final = mysqli_query($conexion, "SELECT esf_d_f,cil_d_f,eje_d_f,add_d_f,av_cc_d,dnp_d,altura_d,esf_i_f,cil_i_f,eje_i_f,add_i_f,av_cc_i,dnp_i,altura_i,aro,lentes,ar_ultra from lensometria_receta_final f inner join paciente p on f.codigo_trata_f = p.codigo_tratamiento where p.nombre like '%" . $nombre . "%' and p.cedula = '" . $cedula . "'");
+  $filas = mysqli_num_rows($receta_final);
+
+  $receta_inicial = mysqli_query($conexion, "SELECT esf_d,cil_d,eje_d,add_d,av_lejos_d,av_cerca_d,esf_i,cil_i,eje_i,add_i,av_lejos_i,av_cerca_i from lensometria_inicial i inner join paciente p on i.codigo_trata = p.codigo_tratamiento where p.nombre like '%" . $nombre . "%' and p.cedula = '" . $cedula . "'");
+  $filas2 = mysqli_num_rows($receta_inicial);
+
+  $receta_objetiva = mysqli_query($conexion, "SELECT esf_d_ob,cil_d_ob,eje_d_ob,add_d_ob,av_lejos_d_ob,av_cerca_d_ob,esf_i_ob,cil_i_ob,eje_i_ob,add_i_ob,av_lejos_i_ob,av_cerca_i_ob from lensometria_objetiva o inner join paciente p on o.codigo_trata_ob = p.codigo_tratamiento where p.nombre like '%" . $nombre . "%' and p.cedula = '" . $cedula . "'");
+  $filas3 = mysqli_num_rows($receta_objetiva);
+
+  $receta_subjetiva = mysqli_query($conexion, "SELECT esf_d_sub,cil_d_sub,eje_d_sub,add_d_sub,av_lejos_d_sub,av_cerca_d_sub,esf_i_sub,cil_i_sub,eje_i_sub,add_i_sub,av_lejos_i_sub,av_cerca_i_sub from lensometria_subjetiva s inner join paciente p on s.codigo_trata_sub = p.codigo_tratamiento where p.nombre like '%" . $nombre . "%' and p.cedula = '" . $cedula . "'");
+  $filas4 = mysqli_num_rows($receta_subjetiva);
+
+  $lensometria = mysqli_query($conexion, "SELECT dist_vert,ang_pant,ang_facial,cover_test,observaciones_clinicas,distancia_vista from lensometria l inner join paciente p on l.codigo_trata_lensometria = p.codigo_tratamiento where p.nombre like '%" . $nombre . "%' and p.cedula = '" . $cedula . "'");
+  $filas5 = mysqli_num_rows($lensometria);
+
+  $diagnostico = "SELECT diagnostico from lensometria_receta_final f inner join paciente p on p.codigo_tratamiento = f.codigo_trata_f where nombre like '%" . $nombre . "%' and cedula = '" . $cedula . "'";
+  $sql2 = mysqli_query($conexion, $diagnostico);
+
+  $profesional = "SELECT password,username from doctores  where username = '" . $pro . "'";
+  $sql5 = mysqli_query($conexion, $profesional);
+
+  $cod_lentes = "SELECT codigo from articulos  where descrip = '" . $aro . "'";
+  $sql6 = mysqli_query($conexion, $cod_lentes);
+
+  if ($row = mysqli_fetch_row($sql)) {
+    if ($row3 = mysqli_fetch_row($sql3)) {
+      if ($row4 = mysqli_fetch_row($sql4)) {
+        if ($row5 = mysqli_fetch_row($sql5)) {
+          if ($row6 = mysqli_fetch_row($sql6)) {
+            $pdf->SetFont('Arial', '', '15');
+
+            $pdf->SetTitle("OPTICAS MUNKEL");
+
+            $pdf->SetTextColor(192, 57, 43);
+            $pdf->SetTextColor('0', '0', '0');
+
+            $pdf->Cell(162, 5, "", 0, 0);
+            $pdf->Cell(58, 5, " " . str_replace('-', '/', date('d/m/Y', strtotime($row[1]))), 0, 1, 'L');
+            $pdf->SetFont('Arial', '', '8');
+
+            $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\munke.png', 10, 2, 35, 20, 'PNG');
+
+            $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\Zeiss-Logo.png', 43, 1, 35, 20, 'PNG');
+
+
+            $pdf->Ln(10);
+            $pdf->Line(10, 25, 200, 25);
+
+
+
+
+            $pdf->Ln(15);
+
+            $pdf->Cell(5, -5, "", 0, 0);
+            $pdf->Cell(11, -15, "Nombre: ", 0, 0);
+            $pdf->Cell(104, -15, " " . wordwrap(utf8_decode($row[2])), 0, 0);
+            $pdf->Line(27, 34, 130, 34);
+            $pdf->Line(27, 34, 130, 34);
+            $pdf->Cell(6, -15, "Edad: ", 0, 0);
+            $pdf->Cell(58, -15, "   " . $row[3], 0, 1);
+            $pdf->Line(139, 34, 200, 34);
+            $pdf->Line(139, 34, 200, 34);
+
+            $pdf->Ln(8);
+
+            $pdf->Cell(5, 5, "", 0, 0);
             $pdf->Cell(8, 9, "Email: ", 0, 0);
             $pdf->Cell(107, 9, " " . wordwrap(utf8_decode($row[5])), 0, 0);
             $pdf->Line(24, 39, 130, 39);
@@ -978,13 +977,13 @@ $suc = $_POST['suc'];
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tab</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.csss">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.csss">
 </head>
 
 <!-- PURO CSS Y DISEÑOS-->
@@ -992,51 +991,51 @@ $suc = $_POST['suc'];
   @import url('https://fonts.google.com/specimen/Roboto+Slab?query=roboto+slab');
 
   input {
-  font-size: 16px;
-  cursor: pointer;
-  border-color: #0a4f77;
-}
+    font-size: 16px;
+    cursor: pointer;
+    border-color: #0a4f77;
+  }
 
-body {
-background: whitesmoke;
-font-family: Arial, Helvetica, sans-serif;
-}
+  body {
+    background: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
- .card {
-border: none;
-border-radius: 0;
-width: 550px;
-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)
-}
+  .card {
+    border: none;
+    border-radius: 0;
+    width: 550px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)
+  }
 
- .text-muted {
-font-weight: 500 !important;
+  .text-muted {
+    font-weight: 500 !important;
 
-font-size: 12px;
-color: #6c757dcc !important;
-}
+    font-size: 12px;
+    color: #6c757dcc !important;
+  }
 
-h2 {
-color: #00557F;
-padding: 10px 0 20px;
-font-family: Roboto Slab !important;
-font-weight: bold;
-}
+  h2 {
+    color: #00557F;
+    padding: 10px 0 20px;
+    font-family: Roboto Slab !important;
+    font-weight: bold;
+  }
 
-.form-group {
-margin-top: 20px;
-}
+  .form-group {
+    margin-top: 20px;
+  }
 
-.first {
-margin-top: 0 !important;
-}
+  .first {
+    margin-top: 0 !important;
+  }
 
- .form-control {
-border-radius: 0;
-}
+  .form-control {
+    border-radius: 0;
+  }
 
 
-.form-group label {
+  .form-group label {
     font-size: 12px;
     font-weight: bold;
   }
@@ -1671,107 +1670,107 @@ Tabla distancias css
 </style>
 
 
-<!-- JS PARA PASAR DE INPUT EN INPUT CON TECLA ENTER--> 
+<!-- JS PARA PASAR DE INPUT EN INPUT CON TECLA ENTER-->
 
 <body>
-<script>
-  function nextFocus(inputF, inputS) {
-  document.getElementById(inputF).addEventListener('keydown', function(event) {
-    if (event.keyCode == 13) {
-      document.getElementById(inputS).focus();
+  <script>
+    function nextFocus(inputF, inputS) {
+      document.getElementById(inputF).addEventListener('keydown', function(event) {
+        if (event.keyCode == 13) {
+          document.getElementById(inputS).focus();
+        }
+      });
     }
-  });
-}
-</script>
+  </script>
 
 
-<!-- FORMULARIO -->
-<div class="img"><a href="admin-info.php"><img src="../imgs/munke.png" alt="" width="20%"></a></div>
-<div class="imgout"><a href="logout.php"><img src="../imgs/salir.png" alt="" width="7%"></a></div>
+  <!-- FORMULARIO -->
+  <div class="img"><a href="admin-info.php"><img src="../imgs/munke.png" alt="" width="20%"></a></div>
+  <div class="imgout"><a href="logout.php"><img src="../imgs/salir.png" alt="" width="7%"></a></div>
 
 
 
   <form action="add-info.php" method="POST" id="formu">
     <div class="todo">
       <div class="tab-container">
-          <ul class="options">
-              <li id="option1" class="option option-active">Registro Paciente</li>
-              <li id="option2" class="option">Registro Antecedentes</li>
-              <li id="option4" class="option">Registro Examen Externo</li>
-              <li id="option3" class="option">Registro Refracciones</li>
-              <li id="option5" class="option">Registro Final</li>
-          </ul>
-  
-          <div class="contents">
-              <div id="content1" class="content content-active">
-                <div class="container">
-                  <div class="row">
-                      <div class="card d-flex justify-content-center mx-auto my-3 p-5">
-                          <center>
-                            <h6 class="text-muted">OPTICAS MUNKEL</h6> 
-                          </center>
-                            <center>
-                          <h2>Registro Paciente</h2>
-                          </center>
-                              <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Nombre Completo<span>*</span></label>
-                                       <input type="text" id="nombre" name="nombre" required size="35" onkeypress="nextFocus('nombre', 'edad')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                     <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName" class="lbledad">Edad<span>*</span></label>
-                                       <div class="age"><input type="text" id="edad" name="edad" required size="12" onkeypress="nextFocus('edad', 'email')"></div>
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                     
-                                </div>
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Email<span>*</span></label>
-                                       <input type="email" id="email" name="email" required size="35" onkeypress="nextFocus('email', 'numero')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                     <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName" class="lbledad">Numero<span>*</span></label>
-                                       <div class="age"><input type="text" id="numero" name="numero" required size="12" onkeypress="nextFocus('numero', 'ocupacion')"></div>
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                     
-                                </div>
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Ocupacion<span>*</span></label>
-                                       <input type="text" id="ocupacion" name="ocupacion" required size="35" onkeypress="nextFocus('ocupacion', 'cedpaciente2')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                     <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName" class="lbledad">Cedula<span>*</span></label>
-                                       <div class="age"><input type="text" id="cedpaciente2" name="cedpaciente2" required size="12" onkeypress="nextFocus('cedpaciente2', 'direccion')"></div>
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                     
-                                </div>
-              
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Direccion<span>*</span></label>
-                                       <input type="text" id="direccion" name="direccion" required size="35" onkeypress="nextFocus('direccion', 'fecha_nacimiento')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                     <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName" class="lbledad">Fecha Nac<span>*</span></label>
-                                       <div class="age"><input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required size="4" onkeypress="nextFocus('fecha_nacimiento', 'sucursal')"></div>
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                     
-                                </div>    
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <div class="lblsuc"><label for="inputFirstName" class="lblsucur">Sucursal<span>*</span></label></div>
-                                       <div class="suc"><select name="sucursal" id="sucursal" required onkeypress="nextFocus('sucursal', 'salud_general')" class="sucur">
-                                       <option disabled>Sucursal</option>
-                                       <option value="alajuela" <?php if ($suc == "alajuela") {
+        <ul class="options">
+          <li id="option1" class="option option-active">Registro Paciente</li>
+          <li id="option2" class="option">Registro Antecedentes</li>
+          <li id="option4" class="option">Registro Examen Externo</li>
+          <li id="option3" class="option">Registro Refracciones</li>
+          <li id="option5" class="option">Registro Final</li>
+        </ul>
+
+        <div class="contents">
+          <div id="content1" class="content content-active">
+            <div class="container">
+              <div class="row">
+                <div class="card d-flex justify-content-center mx-auto my-3 p-5">
+                  <center>
+                    <h6 class="text-muted">OPTICAS MUNKEL</h6>
+                  </center>
+                  <center>
+                    <h2>Registro Paciente</h2>
+                  </center>
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Nombre Completo<span>*</span></label>
+                      <input type="text" id="nombre" name="nombre" required size="35" onkeypress="nextFocus('nombre', 'edad')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName" class="lbledad">Edad<span>*</span></label>
+                      <div class="age"><input type="text" id="edad" name="edad" required size="12" onkeypress="nextFocus('edad', 'email')"></div>
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Email<span>*</span></label>
+                      <input type="email" id="email" name="email" required size="35" onkeypress="nextFocus('email', 'numero')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName" class="lbledad">Numero<span>*</span></label>
+                      <div class="age"><input type="text" id="numero" name="numero" required size="12" onkeypress="nextFocus('numero', 'ocupacion')"></div>
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Ocupacion<span>*</span></label>
+                      <input type="text" id="ocupacion" name="ocupacion" required size="35" onkeypress="nextFocus('ocupacion', 'cedpaciente2')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName" class="lbledad">Cedula<span>*</span></label>
+                      <div class="age"><input type="text" id="cedpaciente2" name="cedpaciente2" required size="12" onkeypress="nextFocus('cedpaciente2', 'direccion')"></div>
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Direccion<span>*</span></label>
+                      <input type="text" id="direccion" name="direccion" required size="35" onkeypress="nextFocus('direccion', 'fecha_nacimiento')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName" class="lbledad">Fecha Nac<span>*</span></label>
+                      <div class="age"><input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required size="4" onkeypress="nextFocus('fecha_nacimiento', 'sucursal')"></div>
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <div class="lblsuc"><label for="inputFirstName" class="lblsucur">Sucursal<span>*</span></label></div>
+                      <div class="suc"><select name="sucursal" id="sucursal" required onkeypress="nextFocus('sucursal', 'salud_general')" class="sucur">
+                          <option disabled>Sucursal</option>
+                          <option value="alajuela" <?php if ($suc == "alajuela") {
                                                       echo "selected='selected'";
                                                     } ?>>Alajuela</option>
                           <option value="belen" <?php if ($suc == "belen") {
@@ -1889,989 +1888,988 @@ Tabla distancias css
                                                   echo "selected='selected'";
                                                 } ?>>Tibas</option>
                         </select>
-                                       </div>
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>                            
-                                     <div class="form-group col-md-6 first">
-                                     <div class="profe"><input type="text" value="<?php echo htmlspecialchars($_SESSION["username"]); ?>" name="pro" readonly class="sucurpro" size="70"></div>
-                                     </div>    
-                                </div>  
                       </div>
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                    <div class="form-group col-md-6 first">
+                      <div class="profe"><input type="text" value="<?php echo htmlspecialchars($_SESSION["username"]); ?>" name="pro" readonly class="sucurpro" size="70"></div>
+                    </div>
                   </div>
-              </div>
-              </div>
-                  
-            
-              
-              <div id="content2" class="content">
-                <div class="container">
-                  <div class="row">
-                      <div class="card d-flex justify-content-center mx-auto my-3 p-5">
-                          <center>
-                            <h6 class="text-muted">OPTICAS MUNKEL</h6>
-                          </center>
-                          <center>
-                            <h2>Antecedentes</h2>
-                        </center>
-                      
-                              <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Salud General<span>*</span></label>
-                                       <input type="text" id="salud_general" name="salud_general" required size="53" onkeypress="nextFocus('salud_general', 'alergias')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div> 
-                                </div>
-  
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Alergias<span>*</span></label>
-                                       <input type="text" id="alergias" name="alergias" required size="53" onkeypress="nextFocus('alergias', 'toma_medicamento')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                </div>
-  
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Toma Medicamenos<span>*</span></label>
-                                       <input type="text" id="toma_medicamentos" name="toma_medicamentos" required size="53" onkeypress="nextFocus('toma_medicamentos', 'cirugias_oculares')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                     
-                                </div>
-  
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Cirugias Oculares<span>*</span></label>
-                                       <input type="text" id="cirugias_oculares" name="cirugias_oculares" required size="53" onkeypress="nextFocus('cirugias_oculares', 'observaciones')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                  </div>
-              
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Observaciones<span>*</span></label>
-                                       <input type="text" id="observaciones" name="observaciones" required size="53" onkeypress="nextFocus('observaciones', 'tratamiento_oftalmologico')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                </div>
-  
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Esta en tratamiento oftalmologico<span>*</span></label>
-                                       <p class="separador"></p>
-                                       <input type="text" id="tratamiento_oftalmologico" name="tratamiento_oftalmologico" required size="35" onkeypress="nextFocus('tratamiento_oftalmologico', 'ultimo_examen')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                     <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName" class="lbledad">Ultimo Examen<span>*</span></label>
-                                       <div class="age"><input type="date" id="ultimo_examen" name="ultimo_examen" required size="30" onkeypress="nextFocus('ultimo_examen', 'motivo_consulta')"></div>
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                </div>
-  
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Motivo de Consulta<span>*</span></label>
-                                       <input type="text" id="motivo_consulta" name="motivo_consulta" required size="53" onkeypress="nextFocus('motivo_consulta', 'sintomas_astenopticos')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                </div>
-  
-                                <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName">Sintomas Astenopticos<span>*</span></label>
-                                       <input type="text" id="sintomas_astenopticos" name="sintomas_astenopticos" required size="53" onkeypress="nextFocus('sintomas_astenopticos', 'content4-cornea_i')">
-                                       <div id="fname_error" class="val_error"></div>
-                                     </div>
-                                </div>
-  
-                  </div>
-              </div>
+                </div>
               </div>
             </div>
-                  <div id="content4" class="content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="card d-flex justify-content-center mx-auto my-3 p-5">
-                               <center> 
-                                <h6 class="text-muted">OPTICAS MUNKEL</h6>
-                              </center>
-                                <center>
-                                   <h2>Examen Externo</h2>
-                                  </center>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6 first">
-                                        <label for="cornea_i" class="lblcor_i">Cornea izquierda<span>*</span></label> 
-                                             <input type="text" id="cornea_i" name="cornea_i" required size="15" onkeypress="nextFocus('cornea_i', 'cornea_d')">
-                                             <div id="fname_error" class="val_error"></div>
-                                           </div>
-                                           <div class="form-group col-md-6 first">
-                                           <label for="cornea_d">Cornea derecha<span>*</span></label>
-                                             <input type="text" id="cornea_d" name="cornea_d" required size="15" onkeypress="nextFocus('cornea_d', 'cristalino_i')">
-                                             <div id="fname_error" class="val_error"></div>
-                                           </div>
-                                       
-                                           
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-6 first">
-                                             <label for="cristalino_i" class="lblcor_i">Cristalino izquierdo<span>*</span></label>
-                                             <input type="text" id="cristalino_i" name="cristalino_i" required size="15" onkeypress="nextFocus('cristalino_i', 'cristalino_d')">
-                                             <div id="fname_error" class="val_error"></div>
-                                           </div>
-                                           <div class="form-group col-md-6 first">
-                                             <label for="cristalino_d" class="lblcor_d">Cristalino derecho<span>*</span></label>
-                                             <input type="text" id="cristalino_d" name="cristalino_d" required size="15" onkeypress="nextFocus('cristalino_d', 'fo_i')">
-                                             <div id="fname_error" class="val_error"></div>
-                                           </div>
-                                           
-                                      </div>
-  
-                                      <div class="form-row">
-                                        <div class="form-group col-md-6 first">
-                                             <label for="fo_i" class="lblcor_i">FO izquierdo<span>*</span></label>
-                                             <input type="text" id="fo_i" name="fo_i" required size="15" onkeypress="nextFocus('fo_i', 'fo_d')">
-                                             <div id="fname_error" class="val_error"></div>
-                                           </div>
-                                           <div class="form-group col-md-6 first">
-                                             <label for="fo_d">FO derecho<span>*</span></label>
-                                             <input type="text" id="fo_d" name="fo_d" required size="15">
-                                             <div id="fname_error" class="val_error"></div>
-                                           </div>
-                                           
-                                      </div>
-                    
-                              
-                                  
-                            </div>
-                        </div>
-                    </div>
-                    </div>   
-                  
-              
-                    <style>
-  
-  
-  
-                    </style>
-  
-  
-              <div id="content3" class="content">
-  
-  <div class="titulo-i">
-    <th>Refraccion Inicial</th>
-</div>
-  <table class="refracciones">
-    <thead class="cabeza">
-      <tr>
-        <th class="indice"></th>
-        <th class="th-refra">Esf</th> 
-        <th class="th-refra">Cil</th> 
-         <th class="th-refra">Eje</th>
-           <th class="th-refra">Add</th>
-            <th class="th-refra">AV Lejos</th>
-            <th class="th-refra">AV Cerca</th>
-      </tr>
-    </thead>
-    <tbody class="cuerpo">
-    <tr>
-      <td class="indices">D</td> 
-      <td class="td-refra"><select name="esf_d" id="esf_d" class="select-td">
-                                                      <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                      <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                      </select></td> 
-      <td class="td-refra"><select name="cil_d" id="cil_d" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="eje_d" id="eje_d" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="add_d" id="add_d" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_lejos_d" id="av_lejos_d" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_cerca_d" id="av_cerca_d" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      </tr>
-      <tr>
-      <td class="indices">I</td>
-      <td class="td-refra"><select name="esf_i" id="esf_i" class="select-td">
-                                                      <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                      <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                      </select></td> 
-      <td class="td-refra"><select name="cil_i" id="cil_i" class="select-td">
-                                                <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="eje_i" id="eje_i" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="add_i" id="add_i" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_lejos_i" id="av_lejos_i" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_cerca_i" id="av_cerca_i" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-                                                    <select name="tipo" id="tipo" hidden>
-                                                    <option value="Refraccion_Inicial"></option>
-                                                    </select>
-      </tr>
-    </tbody>
-  </table>
-  
-  <div class="titulo-o">
-    <th>Refraccion Objetiva</th>
-  </div>
-  <table class="refracciones">
-    <thead class="cabeza">
-      <tr>
-        <th class="indice"></th> 
-        <th class="th-refra">Esf</th> 
-        <th class="th-refra">Cil</th> 
-         <th class="th-refra">Eje</th> 
-          <th class="th-refra">Add</th> 
-          <th class="th-refra">AV Lejos</th> 
-          <th class="th-refra">AV Cerca</th>
-      </tr>
-    </thead>
-    <tbody class="cuerpo">
-    <tr>
-      <td class="indices">D</td> 
-      <td class="td-refra"><select name="esf_d_ob" id="esf_d_ob" class="select-td">
-                                                      <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                      <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                      </select></td> 
-      <td class="td-refra"><select name="cil_d_ob" id="cil_d_ob" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="eje_d_ob" id="eje_d_ob" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="add_d_ob" id="add_d_ob" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_lejos_d_ob" id="av_lejos_d_ob" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_cerca_d_ob" id="av_cerca_d_ob" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      </tr>
-      <tr>
-      <td class="indices">I</td>
-      <td class="td-refra"><select name="esf_i_ob" id="esf_i_ob" class="select-td">
-                                                      <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                      <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                      </select></td> 
-      <td class="td-refra"><select name="cil_i_ob" id="cil_i_ob" class="select-td">
-                                                <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="eje_i_ob" id="eje_i_ob" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="add_i_ob" id="add_i_ob" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_lejos_i_ob" id="av_lejos_i_ob" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_cerca_i_ob" id="av_cerca_i_ob" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-                                                    <select name="tipo_ob" id="tipo_ob" hidden>
-                                                    <option value="Refraccion_Objetiva"></option>
-                                                    </select>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-   <!-- Refraccion Subjetiva  -->
-  
-  <div class="titulo-s">
-    <th>Refraccion Subjetiva</th>
-  </div>
-  <table class="refracciones">
-    <thead class="cabeza">
-      <tr>
-        <th class="indice"></th> 
-        <th class="th-refra">Esf</th>
-         <th class="th-refra">Cil</th>  
-         <th class="th-refra">Eje</th> 
-          <th class="th-refra">Add</th> 
-          <th class="th-refra">AV Lejos</th>
-          <th class="th-refra">AV Cerca</th>
-      </tr>
-    </thead>
-    <tbody class="cuerpo">
-      <tr>
-      <td class="indices">D</td> 
-      <td class="td-refra"><select name="esf_d_sub" id="esf_d_sub" class="select-td">
-                                                      <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                      <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                      </select></td> 
-      <td class="td-refra"><select name="cil_d_sub" id="cil_d_sub" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="eje_d_sub" id="eje_d_sub" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="add_d_sub" id="add_d_sub" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_lejos_d_sub" id="av_lejos_d_sub" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_cerca_d_sub" id="av_cerca_d_sub" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      </tr>
-      <tr>
-      <td class="indices">I</td>
-      <td class="td-refra"><select name="esf_i_sub" id="esf_i_sub" class="select-td">
-                                                      <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                      <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                      </select></td> 
-      <td class="td-refra"><select name="cil_i_sub" id="cil_i_sub" class="select-td">
-                                                <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="eje_i_sub" id="eje_i_sub" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="add_i_sub" id="add_i_sub" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_lejos_i_sub" id="av_lejos_i_sub" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-      <td class="td-refra"><select name="av_cerca_i_sub" id="av_cerca_i_sub" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td>
-                                                    <select name="tipo_sub" id="tipo_sub" hidden>
-                                                    <option value="Refraccion_Subjetiva"></option>
-                                                    </select>
-      </tr>
-    </tbody>
-  </table>
-  
-   <!-- Receta Final  -->
-  
-  <div class="titulo-f">
-    <th>Receta Final</th>
-  </div>
-  <table class="refraccion-f">
-    <thead class="cabeza-f">
-      <tr>
-        <th class="indice-f"></th>
-        <th class="th-refra-f">Esf</th>
-         <th class="th-refra-f">Cil</th> 
-          <th class="th-refra-f">Eje</th> 
-           <th class="th-refra-f">Add</th>
-            <th class="th-refra-f">AV (cc)</th>
-             <th class="th-refra-f">DNP</th> 
-             <th class="th-refra-f">Altura</th>
-      </tr>
-    </thead>
-    <tbody class="cuerpo-f">
-      <tr>
-      <td class="indices-f">D</td>
-      <td class="td-refra-f">
-        <select name="esf_d_f" id="esf_d_f" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select>
-                                                  </td> 
-      <td class="td-refra-f"><select name="cil_d_f" id="cil_d_f" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td> 
-      <td class="td-refra-f"><select name="eje_d_f" id="eje_d_f" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td> 
-      <td class="td-refra-f"><select name="add_d_f" id="add_d_f" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td> 
-      <td class="td-refra-f"><select name="av_cc_d" id="av_cc_d" class="select-td">
-                                                      <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                      <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                      </select></td> 
-      <td class="td-refra-f"><select name="dnp_d" id="dnp_d" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td> 
-      <td class="td-refra-f"><select name="altura_d" id="altura_d" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td> 
-      </tr>
-      <tr>
-      <td class="indices-f">I</td>
-      <td class="td-refra-f"><select name="esf_i_f" id="esf_i_f" class="select-td">
-                                                  <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td> 
-      <td class="td-refra-f"><select name="cil_i_f" id="cil_i_f" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td> 
-      <td class="td-refra-f"><select name="eje_i_f" id="eje_i_f" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td> 
-      <td class="td-refra-f"><select name="add_i_f" id="add_i_f" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                    <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                    </select></td> 
-      <td class="td-refra-f"><select name="av_cc_i" id="av_cc_i" class="select-td">
-                                                      <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                      <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                      </select></td> 
-      <td class="td-refra-f"><select name="dnp_i" id="dnp_i" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                      <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                      </select></td> 
-      <td class="td-refra-f"><select name="altura_i" id="altura_i" class="select-td">
-                                                    <option value="-0.25">-0.25</option>
-                                                      <option value="-0.50">-0.50</option>
-                                                      <option value="-0.75">-0.75</option>
-                                                      <option value="-100">-100</option>
-                                                      <option value="+0.25">+0.25</option>
-                                                      <option value="+0.50">+0.50</option>
-                                                      <option value="+0.75">+0.75</option>
-                                                      <option value="+100">+100</option>
-                                                      </select></td> 
-                                                      <select name="tipo_f" id="tipo_f" hidden>
-                                                      <option value="Receta_Final"></option>
-                                                      </select>
-      </tr>
-    </tbody>
-  </table>
-  
-  <table class="cover-test">
-    <thead class="cabeza-cover">
-      <tr>
-        <th class="th-cover">Cover Test / Movimientos oculares</th> 
-      </tr>
-    </thead>
-    <tbody class="cuerpo-cover">
-      <tr>
-      <td class="td-cover"><textarea name="cover_test" id="cover_test" cols="" rows="" style="border: none;" class="area-cover" placeholder="Cover........."></textarea></td> 
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  
-  <table class="observaciones-clinicas">
-    <thead class="cabeza-observaciones">
-      <tr>
-        <th class="th-observaciones">Observaciones Clinicas</th> 
-      </tr>
-    </thead>
-    <tbody class="cuerpo-observaciones">
-      <tr>
-      <td class="td-observaciones"><textarea name="observaciones_clinicas" id="observaciones_clinicas" cols="40" rows="12" style="border: none;" class="area-observaciones" placeholder="Observaciones......" maxlength="103"></textarea></td> 
-      </tr>
-    </tbody>
-  </table>
-  
-  <table class="distancias">
-      <tr>
-        <th class="th-distancias">Dist.Vert:</th> 
-        <td class="td-distancias"><input type="text" name="dist_vert" id="dist_vert" style="text-align: center; border: 0;" size="10" required></td>
-      </tr>
-      <tr>
-      <th class="th-distancias">Ang.Pant:</th>
-      <td class="td-distancias"><input type="text" name="ang_pant" id="ang_pant" style="text-align: center; border:0;" size="10" required></td>
-      </tr>
-      <tr>
-      <th class="th-distancias">Ang.Facial:</th>
-      <td class="td-distancias"><input type="text" name="ang_facial" id="ang_facial" style="text-align: center; border:0;" size="10" required></td>
-      </tr>
-  </table>
-  
-  
-                  
-                
-              <p></p>
-              <center>
-                <div class="todo2">
-                      <label class="lbl">Distancia para que vea el paciente</label>
-                      <p class="separa"></p>
-                      <div class="d-lg-flex justify-content-between align-items-center pb-4">
-                      <div class="size"><label class="lblradio"><input type="radio" name="radio" id="radio" value="30cm">30cm<span class="checkmark"></span></label></div>
-                      <div class="size"><label class="lblradio"><input type="radio" name="radio" id="radio" value="40cm">40cm<span class="checkmark"></span></label></div>
-                      <div class="size"><label class="lblradio"><input type="radio" name="radio" id="radio" value="50cm">50cm<span class="checkmark"></span></label></div>
-                      </div>
-                      </div> 
-                      <center><label class="lbl">Diagnostico</label></center>
-                                          <center><input type="text" name="diagnostico" id="diagnostico" class="aca" placeholder="Diagnostico: " required size="100"></center>
-                                          <p></p>
-
-
-                                          </div>
-
-                                        
-  
-                                          <div id="content5" class="content">
-                                          <div class="container">
-                  <div class="row">
-                      <div class="card d-flex justify-content-center mx-auto my-3 p-5" style="width: 90%;">
-                          <center>
-                            <h6 class="text-muted">OPTICAS MUNKEL</h6>
-                          </center>
-                          <center>
-                            <h2>Ultimo Registro</h2>
-                          </center>
-                          <input type="text" size="35" hidden>
-                          <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName" id="lbLlaro">Aro<span>*</span></label>
-                                       <select name="aro" id="aro"style="width: 700px; font-size:smaller; height: 25px; text-align:left" class="sucur">
-<?php
-//CODIGO PHP Y SQL PARA CARGAR LOS DATOS DE LOS AROS EN UN SELECT 
-require('abrir.php');
-
-$sql = "SELECT descrip FROM articulos";
-
-$query = $conexion->query($sql);
-
-while ($valores = mysqli_fetch_array($query)) {
-   echo "<option value='" . $valores['descrip'] . "'>" . $valores['descrip'] . "</option>";
-}
-
-?>
-</select>
-                                    <div id="fname_error" class="val_error"></div>
-                                  </div>   
-                                </div>
-                                <input type="text" size="35" hidden>
-                          <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName" id="lbLlentes">Lentes<span>*</span></label>
-                                       <select name="len" id="len"style="width: 700px; font-size:smaller; height: 25px; text-align:left" class="sucur">
-<?php
-//CODIGO PHP Y SQL PARA CARGAR LOS DATOS DE LOS AROS EN UN SELECT 
-require('abrir.php');
-
-$sql = "SELECT descrip FROM lentes";
-
-$query = $conexion->query($sql);
-
-while ($valores = mysqli_fetch_array($query)) {
-   echo "<option value='" . $valores['descrip'] . "'>" . $valores['descrip'] . "</option>";
-}
-
-?>
-</select>
-                                    <div id="fname_error" class="val_error"></div>
-                                  </div>   
-                                </div>
-                                <input type="text" size="35" hidden>
-                          <div class="form-row">
-                                  <div class="form-group col-md-6 first">
-                                       <label for="inputFirstName" id="lbltra">Tratamientos<span>*</span></label>
-                                       <select name="tra" id="tra"style="width: 700px; font-size:smaller; height: 25px; text-align:left" class="sucur">
-<?php
-//CODIGO PHP Y SQL PARA CARGAR LOS DATOS DE LOS AROS EN UN SELECT 
-require('abrir.php');
-
-$sql = "SELECT Descripcion FROM tratamientos";
-
-$query = $conexion->query($sql);
-
-while ($valores = mysqli_fetch_array($query)) {
-   echo "<option value='" . $valores['Descripcion'] . "'>" . $valores['Descripcion'] . "</option>";
-}
-
-?>
-</select>                            
-                                      <div id="fname_error" class="val_error"></div>
-                                    </div>   
-                                </div>
-                                <p class="separa"></p>
-                               
-                           
-                                  <button type="submit" class="btn1g" name="inicial">Guardar</button>
-                                
-                                    
-                                  <button type="reset" class="btn1l" id="btn-reset" name="btn-reset">Limpiar</button>
-                                    
-                                    
-                                     
-                                </div>
-                      </div>
-                  </div>
-              </div>
-                                              </div>
-              </div>
           </div>
+
+
+
+          <div id="content2" class="content">
+            <div class="container">
+              <div class="row">
+                <div class="card d-flex justify-content-center mx-auto my-3 p-5">
+                  <center>
+                    <h6 class="text-muted">OPTICAS MUNKEL</h6>
+                  </center>
+                  <center>
+                    <h2>Antecedentes</h2>
+                  </center>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Salud General<span>*</span></label>
+                      <input type="text" id="salud_general" name="salud_general" required size="53" onkeypress="nextFocus('salud_general', 'alergias')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Alergias<span>*</span></label>
+                      <input type="text" id="alergias" name="alergias" required size="53" onkeypress="nextFocus('alergias', 'toma_medicamento')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Toma Medicamenos<span>*</span></label>
+                      <input type="text" id="toma_medicamentos" name="toma_medicamentos" required size="53" onkeypress="nextFocus('toma_medicamentos', 'cirugias_oculares')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Cirugias Oculares<span>*</span></label>
+                      <input type="text" id="cirugias_oculares" name="cirugias_oculares" required size="53" onkeypress="nextFocus('cirugias_oculares', 'observaciones')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Observaciones<span>*</span></label>
+                      <input type="text" id="observaciones" name="observaciones" required size="53" onkeypress="nextFocus('observaciones', 'tratamiento_oftalmologico')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Esta en tratamiento oftalmologico<span>*</span></label>
+                      <p class="separador"></p>
+                      <input type="text" id="tratamiento_oftalmologico" name="tratamiento_oftalmologico" required size="35" onkeypress="nextFocus('tratamiento_oftalmologico', 'ultimo_examen')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName" class="lbledad">Ultimo Examen<span>*</span></label>
+                      <div class="age"><input type="date" id="ultimo_examen" name="ultimo_examen" required size="30" onkeypress="nextFocus('ultimo_examen', 'motivo_consulta')"></div>
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Motivo de Consulta<span>*</span></label>
+                      <input type="text" id="motivo_consulta" name="motivo_consulta" required size="53" onkeypress="nextFocus('motivo_consulta', 'sintomas_astenopticos')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName">Sintomas Astenopticos<span>*</span></label>
+                      <input type="text" id="sintomas_astenopticos" name="sintomas_astenopticos" required size="53" onkeypress="nextFocus('sintomas_astenopticos', 'content4-cornea_i')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="content4" class="content">
+            <div class="container">
+              <div class="row">
+                <div class="card d-flex justify-content-center mx-auto my-3 p-5">
+                  <center>
+                    <h6 class="text-muted">OPTICAS MUNKEL</h6>
+                  </center>
+                  <center>
+                    <h2>Examen Externo</h2>
+                  </center>
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="cornea_i" class="lblcor_i">Cornea izquierda<span>*</span></label>
+                      <input type="text" id="cornea_i" name="cornea_i" required size="15" onkeypress="nextFocus('cornea_i', 'cornea_d')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                    <div class="form-group col-md-6 first">
+                      <label for="cornea_d">Cornea derecha<span>*</span></label>
+                      <input type="text" id="cornea_d" name="cornea_d" required size="15" onkeypress="nextFocus('cornea_d', 'cristalino_i')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+
+
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="cristalino_i" class="lblcor_i">Cristalino izquierdo<span>*</span></label>
+                      <input type="text" id="cristalino_i" name="cristalino_i" required size="15" onkeypress="nextFocus('cristalino_i', 'cristalino_d')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                    <div class="form-group col-md-6 first">
+                      <label for="cristalino_d" class="lblcor_d">Cristalino derecho<span>*</span></label>
+                      <input type="text" id="cristalino_d" name="cristalino_d" required size="15" onkeypress="nextFocus('cristalino_d', 'fo_i')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="fo_i" class="lblcor_i">FO izquierdo<span>*</span></label>
+                      <input type="text" id="fo_i" name="fo_i" required size="15" onkeypress="nextFocus('fo_i', 'fo_d')">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                    <div class="form-group col-md-6 first">
+                      <label for="fo_d">FO derecho<span>*</span></label>
+                      <input type="text" id="fo_d" name="fo_d" required size="15">
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <style>
+
+
+
+          </style>
+
+
+          <div id="content3" class="content">
+
+            <div class="titulo-i">
+              <th>Refraccion Inicial</th>
+            </div>
+            <table class="refracciones">
+              <thead class="cabeza">
+                <tr>
+                  <th class="indice"></th>
+                  <th class="th-refra">Esf</th>
+                  <th class="th-refra">Cil</th>
+                  <th class="th-refra">Eje</th>
+                  <th class="th-refra">Add</th>
+                  <th class="th-refra">AV Lejos</th>
+                  <th class="th-refra">AV Cerca</th>
+                </tr>
+              </thead>
+              <tbody class="cuerpo">
+                <tr>
+                  <td class="indices">D</td>
+                  <td class="td-refra"><select name="esf_d" id="esf_d" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="cil_d" id="cil_d" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="eje_d" id="eje_d" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="add_d" id="add_d" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_lejos_d" id="av_lejos_d" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_cerca_d" id="av_cerca_d" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                </tr>
+                <tr>
+                  <td class="indices">I</td>
+                  <td class="td-refra"><select name="esf_i" id="esf_i" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="cil_i" id="cil_i" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="eje_i" id="eje_i" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="add_i" id="add_i" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_lejos_i" id="av_lejos_i" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_cerca_i" id="av_cerca_i" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <select name="tipo" id="tipo" hidden>
+                    <option value="Refraccion_Inicial"></option>
+                  </select>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="titulo-o">
+              <th>Refraccion Objetiva</th>
+            </div>
+            <table class="refracciones">
+              <thead class="cabeza">
+                <tr>
+                  <th class="indice"></th>
+                  <th class="th-refra">Esf</th>
+                  <th class="th-refra">Cil</th>
+                  <th class="th-refra">Eje</th>
+                  <th class="th-refra">Add</th>
+                  <th class="th-refra">AV Lejos</th>
+                  <th class="th-refra">AV Cerca</th>
+                </tr>
+              </thead>
+              <tbody class="cuerpo">
+                <tr>
+                  <td class="indices">D</td>
+                  <td class="td-refra"><select name="esf_d_ob" id="esf_d_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="cil_d_ob" id="cil_d_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="eje_d_ob" id="eje_d_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="add_d_ob" id="add_d_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_lejos_d_ob" id="av_lejos_d_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_cerca_d_ob" id="av_cerca_d_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                </tr>
+                <tr>
+                  <td class="indices">I</td>
+                  <td class="td-refra"><select name="esf_i_ob" id="esf_i_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="cil_i_ob" id="cil_i_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="eje_i_ob" id="eje_i_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="add_i_ob" id="add_i_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_lejos_i_ob" id="av_lejos_i_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_cerca_i_ob" id="av_cerca_i_ob" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <select name="tipo_ob" id="tipo_ob" hidden>
+                    <option value="Refraccion_Objetiva"></option>
+                  </select>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <!-- Refraccion Subjetiva  -->
+
+            <div class="titulo-s">
+              <th>Refraccion Subjetiva</th>
+            </div>
+            <table class="refracciones">
+              <thead class="cabeza">
+                <tr>
+                  <th class="indice"></th>
+                  <th class="th-refra">Esf</th>
+                  <th class="th-refra">Cil</th>
+                  <th class="th-refra">Eje</th>
+                  <th class="th-refra">Add</th>
+                  <th class="th-refra">AV Lejos</th>
+                  <th class="th-refra">AV Cerca</th>
+                </tr>
+              </thead>
+              <tbody class="cuerpo">
+                <tr>
+                  <td class="indices">D</td>
+                  <td class="td-refra"><select name="esf_d_sub" id="esf_d_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="cil_d_sub" id="cil_d_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="eje_d_sub" id="eje_d_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="add_d_sub" id="add_d_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_lejos_d_sub" id="av_lejos_d_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_cerca_d_sub" id="av_cerca_d_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                </tr>
+                <tr>
+                  <td class="indices">I</td>
+                  <td class="td-refra"><select name="esf_i_sub" id="esf_i_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="cil_i_sub" id="cil_i_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="eje_i_sub" id="eje_i_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="add_i_sub" id="add_i_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_lejos_i_sub" id="av_lejos_i_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra"><select name="av_cerca_i_sub" id="av_cerca_i_sub" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <select name="tipo_sub" id="tipo_sub" hidden>
+                    <option value="Refraccion_Subjetiva"></option>
+                  </select>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Receta Final  -->
+
+            <div class="titulo-f">
+              <th>Receta Final</th>
+            </div>
+            <table class="refraccion-f">
+              <thead class="cabeza-f">
+                <tr>
+                  <th class="indice-f"></th>
+                  <th class="th-refra-f">Esf</th>
+                  <th class="th-refra-f">Cil</th>
+                  <th class="th-refra-f">Eje</th>
+                  <th class="th-refra-f">Add</th>
+                  <th class="th-refra-f">AV (cc)</th>
+                  <th class="th-refra-f">DNP</th>
+                  <th class="th-refra-f">Altura</th>
+                </tr>
+              </thead>
+              <tbody class="cuerpo-f">
+                <tr>
+                  <td class="indices-f">D</td>
+                  <td class="td-refra-f">
+                    <select name="esf_d_f" id="esf_d_f" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select>
+                  </td>
+                  <td class="td-refra-f"><select name="cil_d_f" id="cil_d_f" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="eje_d_f" id="eje_d_f" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="add_d_f" id="add_d_f" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="av_cc_d" id="av_cc_d" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="dnp_d" id="dnp_d" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="altura_d" id="altura_d" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                </tr>
+                <tr>
+                  <td class="indices-f">I</td>
+                  <td class="td-refra-f"><select name="esf_i_f" id="esf_i_f" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="cil_i_f" id="cil_i_f" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="eje_i_f" id="eje_i_f" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="add_i_f" id="add_i_f" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="av_cc_i" id="av_cc_i" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="dnp_i" id="dnp_i" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <td class="td-refra-f"><select name="altura_i" id="altura_i" class="select-td">
+                      <option value="-0.25">-0.25</option>
+                      <option value="-0.50">-0.50</option>
+                      <option value="-0.75">-0.75</option>
+                      <option value="-100">-100</option>
+                      <option value="+0.25">+0.25</option>
+                      <option value="+0.50">+0.50</option>
+                      <option value="+0.75">+0.75</option>
+                      <option value="+100">+100</option>
+                    </select></td>
+                  <select name="tipo_f" id="tipo_f" hidden>
+                    <option value="Receta_Final"></option>
+                  </select>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="cover-test">
+              <thead class="cabeza-cover">
+                <tr>
+                  <th class="th-cover">Cover Test / Movimientos oculares</th>
+                </tr>
+              </thead>
+              <tbody class="cuerpo-cover">
+                <tr>
+                  <td class="td-cover"><textarea name="cover_test" id="cover_test" cols="" rows="" style="border: none;" class="area-cover" placeholder="Cover........."></textarea></td>
+                </tr>
+              </tbody>
+            </table>
+
+
+
+            <table class="observaciones-clinicas">
+              <thead class="cabeza-observaciones">
+                <tr>
+                  <th class="th-observaciones">Observaciones Clinicas</th>
+                </tr>
+              </thead>
+              <tbody class="cuerpo-observaciones">
+                <tr>
+                  <td class="td-observaciones"><textarea name="observaciones_clinicas" id="observaciones_clinicas" cols="40" rows="12" style="border: none;" class="area-observaciones" placeholder="Observaciones......" maxlength="103"></textarea></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="distancias">
+              <tr>
+                <th class="th-distancias">Dist.Vert:</th>
+                <td class="td-distancias"><input type="text" name="dist_vert" id="dist_vert" style="text-align: center; border: 0;" size="10" required></td>
+              </tr>
+              <tr>
+                <th class="th-distancias">Ang.Pant:</th>
+                <td class="td-distancias"><input type="text" name="ang_pant" id="ang_pant" style="text-align: center; border:0;" size="10" required></td>
+              </tr>
+              <tr>
+                <th class="th-distancias">Ang.Facial:</th>
+                <td class="td-distancias"><input type="text" name="ang_facial" id="ang_facial" style="text-align: center; border:0;" size="10" required></td>
+              </tr>
+            </table>
+
+
+
+
+            <p></p>
+            <center>
+              <div class="todo2">
+                <label class="lbl">Distancia para que vea el paciente</label>
+                <p class="separa"></p>
+                <div class="d-lg-flex justify-content-between align-items-center pb-4">
+                  <div class="size"><label class="lblradio"><input type="radio" name="radio" id="radio" value="30cm">30cm<span class="checkmark"></span></label></div>
+                  <div class="size"><label class="lblradio"><input type="radio" name="radio" id="radio" value="40cm">40cm<span class="checkmark"></span></label></div>
+                  <div class="size"><label class="lblradio"><input type="radio" name="radio" id="radio" value="50cm">50cm<span class="checkmark"></span></label></div>
+                </div>
+              </div>
+              <center><label class="lbl">Diagnostico</label></center>
+              <center><input type="text" name="diagnostico" id="diagnostico" class="aca" placeholder="Diagnostico: " required size="100"></center>
+              <p></p>
+
+
+          </div>
+
+
+
+          <div id="content5" class="content">
+            <div class="container">
+              <div class="row">
+                <div class="card d-flex justify-content-center mx-auto my-3 p-5" style="width: 90%;">
+                  <center>
+                    <h6 class="text-muted">OPTICAS MUNKEL</h6>
+                  </center>
+                  <center>
+                    <h2>Ultimo Registro</h2>
+                  </center>
+                  <input type="text" size="35" hidden>
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName" id="lbLlaro">Aro<span>*</span></label>
+                      <select name="aro" id="aro" style="width: 700px; font-size:smaller; height: 25px; text-align:left" class="sucur">
+                        <?php
+                        //CODIGO PHP Y SQL PARA CARGAR LOS DATOS DE LOS AROS EN UN SELECT 
+                        require('abrir.php');
+
+                        $sql = "SELECT descrip FROM articulos";
+
+                        $query = $conexion->query($sql);
+
+                        while ($valores = mysqli_fetch_array($query)) {
+                          echo "<option value='" . $valores['descrip'] . "'>" . $valores['descrip'] . "</option>";
+                        }
+
+                        ?>
+                      </select>
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                  </div>
+                  <input type="text" size="35" hidden>
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName" id="lbLlentes">Lentes<span>*</span></label>
+                      <select name="len" id="len" style="width: 700px; font-size:smaller; height: 25px; text-align:left" class="sucur">
+                        <?php
+                        //CODIGO PHP Y SQL PARA CARGAR LOS DATOS DE LOS AROS EN UN SELECT 
+                        require('abrir.php');
+
+                        $sql = "SELECT descrip FROM lentes";
+
+                        $query = $conexion->query($sql);
+
+                        while ($valores = mysqli_fetch_array($query)) {
+                          echo "<option value='" . $valores['descrip'] . "'>" . $valores['descrip'] . "</option>";
+                        }
+
+                        ?>
+                      </select>
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                  </div>
+                  <input type="text" size="35" hidden>
+                  <div class="form-row">
+                    <div class="form-group col-md-6 first">
+                      <label for="inputFirstName" id="lbltra">Tratamientos<span>*</span></label>
+                      <select name="tra" id="tra" style="width: 700px; font-size:smaller; height: 25px; text-align:left" class="sucur">
+                        <?php
+                        //CODIGO PHP Y SQL PARA CARGAR LOS DATOS DE LOS AROS EN UN SELECT 
+                        require('abrir.php');
+
+                        $sql = "SELECT Descripcion FROM tratamientos";
+
+                        $query = $conexion->query($sql);
+
+                        while ($valores = mysqli_fetch_array($query)) {
+                          echo "<option value='" . $valores['Descripcion'] . "'>" . $valores['Descripcion'] . "</option>";
+                        }
+
+                        ?>
+                      </select>
+                      <div id="fname_error" class="val_error"></div>
+                    </div>
+                  </div>
+                  <p class="separa"></p>
+
+
+                  <button type="submit" class="btn1g" name="inicial">Guardar</button>
+
+
+                  <button type="reset" class="btn1l" id="btn-reset" name="btn-reset">Limpiar</button>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+    </div>
 
-    </form>
+  </form>
 
-    <!-- REFERENCIA AL JS DEL FRAMEPAGE-->
-    <script src="main.js"></script>
-     <!-- REFERENCIAS A BOOTSTRAP-->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+  <!-- REFERENCIA AL JS DEL FRAMEPAGE-->
+  <script src="main.js"></script>
+  <!-- REFERENCIAS A BOOTSTRAP-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </body>
+
 </html>
 
 
 <?php
 //FUNCION PHP PARA MANTENER LOS DATOS DESPUES DE ENVIAR EL FORMULARIO
- include("abrir.php");
+include("abrir.php");
 
 function MantenerDatos($boton)
 {
-    $var1 = "";
- 
-    if (isset($_POST['inicial'])) {
- 
-        $var1 = $_POST[$boton];
- 
-    } else if (isset($_POST[null])) {
- 
-        echo 0;
- 
-    }
- 
-    return $var1;
+  $var1 = "";
+
+  if (isset($_POST['inicial'])) {
+
+    $var1 = $_POST[$boton];
+  } else if (isset($_POST[null])) {
+
+    echo 0;
+  }
+
+  return $var1;
 }
- 
+
 
 ?>
 
@@ -2879,91 +2877,91 @@ function MantenerDatos($boton)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
   //SCRIPT PARA BORRAR CIERTOS CAMPOS DESPUES DE TOCAR BOTON LIMPIAR
-    $("#btn-reset").on("click", function() {
-        // Cancelar comportamiento normal del botón
-        event.preventDefault();
-        $('#nombre').val('');
-        $('#edad').val('');
-        $('#cedpaciente2').val('');
-        $('#numero').val('');
-        $('#direccion').val('');
-        $('#email').val('');
-        $('#ocupacion').val('');
-        $('#fecha_nacimiento').val('');
-        $('#salud_general').val('');
-        $('#alergias').val('');
-        $('#toma_medicamentos').val('');
-        $('#tratamiento_oftalmologico').val('');
-        $('#observaciones').val('');
-        $('#ultimo_examen').val('');
-        $('#motivo_consulta').val('');
-        $('#sintomas_astenopticos').val('');
-        $('#cornea_i').val('');
-        $('#cornea_d').val('');
-        $('#cristalino_i').val('');
-        $('#cristalino_d').val('');
-        $('#fo_i').val('');
-        $('#fo_d').val('');
-        $('#esf_d').val('');
-        $('#esf_i').val('');
-        $('#esf_d_ob').val('');
-        $('#esf_i_ob').val('');
-        $('#esf_d_sub').val('');
-        $('#esf_i_sub').val('');
-        $('#esf_d_f').val('');
-        $('#esf_i_f').val('');
-        $('#cil_d').val('');
-        $('#eje_d').val('');
-        $('#add_d').val('');
-        $('#av_lejos_d').val('');
-        $('#av_cerca_d').val('');
-        $('#cil_i').val('');
-        $('#eje_i').val('');
-        $('#add_i').val('');
-        $('#av_lejos_i').val('');
-        $('#av_cerca_i').val('');
-        $('#cil_d_ob').val('');
-        $('#eje_d_ob').val('');
-        $('#eje_i_ob').val('');
-        $('#add_d_ob').val('');
-        $('#av_lejos_d_ob').val('');
-        $('#av_cerca_d_ob').val('');
-        $('#cil_i_ob').val('');
-        $('#add_i_ob').val('');
-        $('#av_lejos_i_ob').val('');
-        $('#av_cerca_i_ob').val('');
-        $('#cil_d_sub').val('');
-        $('#eje_d_sub').val('');
-        $('#add_d_sub').val('');
-        $('#av_lejos_d_sub').val('');
-        $('#av_cerca_d_sub').val('');
-        $('#cil_i_sub').val('');
-        $('#eje_i_sub').val('');
-        $('#add_i_sub').val('');
-        $('#av_lejos_i_sub').val('');
-        $('#av_cerca_i_sub').val('');
-        $('#cil_d_f').val('');
-        $('#eje_d_f').val('');
-        $('#add_d_f').val('');
-        $('#av_cc_d').val('');
-        $('#dnp_d').val('');
-        $('#altura_d').val('');
-        $('#cil_i_f').val('');
-        $('#eje_i_f').val('');
-        $('#add_i_f').val('');
-        $('#av_cc_i').val('');
-        $('#dnp_i').val('');
-        $('#altura_i').val('');
-        $('#ang_pant').val('');
-        $('#ang_facial').val('');
-        $('#dist_vert').val('');
-        $('#cover_test').val('');
-        $('#observaciones_clinicas').val('');
-        $('#aro').val('');
-        $('#len').val('');
-        $('#tra').val('');
-        $('#cirugias_oculares').val('');
-        $('#radio').val('');
-    
-    });
+  $("#btn-reset").on("click", function() {
+    // Cancelar comportamiento normal del botón
+    event.preventDefault();
+    $('#nombre').val('');
+    $('#edad').val('');
+    $('#cedpaciente2').val('');
+    $('#numero').val('');
+    $('#direccion').val('');
+    $('#email').val('');
+    $('#ocupacion').val('');
+    $('#fecha_nacimiento').val('');
+    $('#salud_general').val('');
+    $('#alergias').val('');
+    $('#toma_medicamentos').val('');
+    $('#tratamiento_oftalmologico').val('');
+    $('#observaciones').val('');
+    $('#ultimo_examen').val('');
+    $('#motivo_consulta').val('');
+    $('#sintomas_astenopticos').val('');
+    $('#cornea_i').val('');
+    $('#cornea_d').val('');
+    $('#cristalino_i').val('');
+    $('#cristalino_d').val('');
+    $('#fo_i').val('');
+    $('#fo_d').val('');
+    $('#esf_d').val('');
+    $('#esf_i').val('');
+    $('#esf_d_ob').val('');
+    $('#esf_i_ob').val('');
+    $('#esf_d_sub').val('');
+    $('#esf_i_sub').val('');
+    $('#esf_d_f').val('');
+    $('#esf_i_f').val('');
+    $('#cil_d').val('');
+    $('#eje_d').val('');
+    $('#add_d').val('');
+    $('#av_lejos_d').val('');
+    $('#av_cerca_d').val('');
+    $('#cil_i').val('');
+    $('#eje_i').val('');
+    $('#add_i').val('');
+    $('#av_lejos_i').val('');
+    $('#av_cerca_i').val('');
+    $('#cil_d_ob').val('');
+    $('#eje_d_ob').val('');
+    $('#eje_i_ob').val('');
+    $('#add_d_ob').val('');
+    $('#av_lejos_d_ob').val('');
+    $('#av_cerca_d_ob').val('');
+    $('#cil_i_ob').val('');
+    $('#add_i_ob').val('');
+    $('#av_lejos_i_ob').val('');
+    $('#av_cerca_i_ob').val('');
+    $('#cil_d_sub').val('');
+    $('#eje_d_sub').val('');
+    $('#add_d_sub').val('');
+    $('#av_lejos_d_sub').val('');
+    $('#av_cerca_d_sub').val('');
+    $('#cil_i_sub').val('');
+    $('#eje_i_sub').val('');
+    $('#add_i_sub').val('');
+    $('#av_lejos_i_sub').val('');
+    $('#av_cerca_i_sub').val('');
+    $('#cil_d_f').val('');
+    $('#eje_d_f').val('');
+    $('#add_d_f').val('');
+    $('#av_cc_d').val('');
+    $('#dnp_d').val('');
+    $('#altura_d').val('');
+    $('#cil_i_f').val('');
+    $('#eje_i_f').val('');
+    $('#add_i_f').val('');
+    $('#av_cc_i').val('');
+    $('#dnp_i').val('');
+    $('#altura_i').val('');
+    $('#ang_pant').val('');
+    $('#ang_facial').val('');
+    $('#dist_vert').val('');
+    $('#cover_test').val('');
+    $('#observaciones_clinicas').val('');
+    $('#aro').val('');
+    $('#len').val('');
+    $('#tra').val('');
+    $('#cirugias_oculares').val('');
+    $('#radio').val('');
+
+  });
 </script>
