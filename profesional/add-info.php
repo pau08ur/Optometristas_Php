@@ -131,7 +131,7 @@ if (isset($_POST['inicial'])) {
 
   $aro = $_POST['aro'];
   $lentes = $_POST['lentes'];
-  $ar_ultra = $_POST['ar_ultra'];
+  $tratamiento = $_POST['tratamiento'];
 
   $pro = $_POST['pro'];
 
@@ -980,7 +980,7 @@ if (isset($_POST['inicial'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tab</title>
+  <title>Munkel</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.csss">
@@ -1656,7 +1656,7 @@ Tabla distancias css
     margin-left: -30px;
   }
 
-  #ar_ultra {
+  #tratamientos {
     margin-left: -30px;
   }
 
@@ -1687,6 +1687,7 @@ Tabla distancias css
   <!-- FORMULARIO -->
   <div class="img"><a href="admin-info.php"><img src="../imgs/munke.png" alt="" width="20%"></a></div>
   <div class="imgout"><a href="logout.php"><img src="../imgs/salir.png" alt="" width="7%"></a></div>
+  
 
 
 

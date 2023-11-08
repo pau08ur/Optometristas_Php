@@ -84,3 +84,4 @@ option5.addEventListener('click', ()=> {
     chose = 5
     changeOption()
 })
+
