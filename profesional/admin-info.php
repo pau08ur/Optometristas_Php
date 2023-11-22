@@ -3,7 +3,7 @@
 if (isset($_POST['imprimir'])) {
 
   include("abrir.php");
-  require('../fpdf/fpdf.php');
+  require('fpdf/fpdf.php');
 
   $nombre = $_POST['nombre'];
   $cedula = $_POST['cedpaciente2'];
@@ -80,44 +80,43 @@ if (isset($_POST['imprimir'])) {
 
             $pdf->Ln(15);
 
-            $pdf->Cell(5, -5, "", 0, 0);
+
+            $pdf->Cell(4, -5, "", 0, 0);
             $pdf->Cell(11, -15, "Nombre: ", 0, 0);
             $pdf->Cell(104, -15, " " . wordwrap(utf8_decode($row[2])), 0, 0);
             $pdf->Line(27, 34, 130, 34);
-            $pdf->Line(27, 34, 130, 34);
+           
             $pdf->Cell(6, -15, "Edad: ", 0, 0);
             $pdf->Cell(58, -15, "   " . $row[3], 0, 1);
             $pdf->Line(139, 34, 200, 34);
-            $pdf->Line(139, 34, 200, 34);
+            
 
             $pdf->Ln(8);
 
-            $pdf->Cell(5, 5, "", 0, 0);
+            $pdf->Cell(4, 5, "", 0, 0);
             $pdf->Cell(8, 9, "Email: ", 0, 0);
             $pdf->Cell(107, 9, " " . wordwrap(utf8_decode($row[5])), 0, 0);
             $pdf->Line(24, 39, 130, 39);
-            $pdf->Line(24, 39, 130, 39);
+            
 
             $pdf->Cell(11, 9, "Numero: ", 0, 0);
             $pdf->Cell(103, 9, " " . $row[4], 0, 1);
             $pdf->Line(142, 39, 200, 39);
-            $pdf->Line(142, 39, 200, 39);
+            
             $pdf->Ln(8);
 
-
-            $pdf->Cell(5, 5, "", 0, 0);
+            $pdf->Cell(4, 5, "", 0, 0);
             $pdf->Cell(14, -15, "Ocupacion: ", 0, 0);
             $pdf->Cell(101, -15, " " . wordwrap(utf8_decode($row[6])), 0, 0);
             $pdf->Line(30, 44, 130, 44);
-            $pdf->Line(30, 44, 130, 44);
+            
             $pdf->Cell(10, -15, "Cedula: ", 0, 0);
             $pdf->Cell(58, -15, " " . $row[7], 0, 1);
             $pdf->Line(141, 44, 200, 44);
-            $pdf->Line(141, 44, 200, 44);
+            
             $pdf->Ln(8);
 
-
-            $pdf->Cell(5, 5, "", 0, 0);
+            $pdf->Cell(4, 5, "", 0, 0);
             $pdf->Cell(23, 9, "Fecha Nacimiento: ", 0, 0);
             $pdf->Cell(92, 9, " " . str_replace('-', '/', date('d/m/Y', strtotime($row[9]))), 0, 0);
             $pdf->Line(39, 49, 130, 49);
@@ -127,18 +126,18 @@ if (isset($_POST['imprimir'])) {
             $pdf->Ln(8);
 
 
-            $pdf->Cell(5, 5, "", 0, 0);
+            $pdf->Cell(4, 5, "", 0, 0);
             $pdf->Cell(12.5, -15, "Direccion: ", 0, 0);
             $pdf->Cell(85, -15, " " . wordwrap(utf8_decode($row[8])), 0, 0);
             $pdf->Line(29, 55, 200, 55);
             $pdf->Ln(-2);
 
             $pdf->SetFont('Arial', 'B', '8');
-            $pdf->Cell(180, 5, "Antecedentes:", 0, 1, 'C');
+            $pdf->Cell(180, 5, "ANTECEDENTES:", 0, 1, 'C');
             $pdf->SetFont('Arial', '', '8');
             $pdf->Ln(7);
 
-            $pdf->Cell(5, -6, "", 0, 0);
+            $pdf->Cell(4, -6, "", 0, 0);
             $pdf->Cell(19, -6, "Salud General: ", 0, 0);
             $pdf->Cell(96, -6, " " . wordwrap(utf8_decode($row3[0])), 0, 0);
             $pdf->Line(34, 69, 130, 69);
@@ -147,18 +146,18 @@ if (isset($_POST['imprimir'])) {
             $pdf->Line(142, 69, 200, 69);
             $pdf->Ln(8);
 
-            $pdf->Cell(5, 5, "", 0, 0);
+            $pdf->Cell(4, 5, "", 0, 0);
             $pdf->Cell(27, 1, "Toma Medicamentos: ", 0, 0);
             $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($row3[2])), 0, 0);
             $pdf->Line(40, 74, 130, 74);
             $pdf->Cell(43, 1, "Esta en tratamiento oftalmologico: ", 0, 0);
             $pdf->Line(174, 74, 200, 74);
             $pdf->Cell(58, 1, " " . wordwrap(utf8_decode($row3[4])), 0, 1);
+
             $pdf->Ln(8);
 
 
-
-            $pdf->Cell(5, 5, "", 0, 0);
+            $pdf->Cell(4, 5, "", 0, 0);
             $pdf->Cell(23, -7, "Cirugias Oculares: ", 0, 0);
             $pdf->Cell(92, -7, " " . wordwrap(utf8_decode($row3[3])), 0, 0);
             $pdf->Line(39, 79, 130, 79);
@@ -167,22 +166,22 @@ if (isset($_POST['imprimir'])) {
             $pdf->Line(151, 79, 200, 79);
             $pdf->Ln(8);
 
-            $pdf->Cell(5, 1, "", 0, 0);
+            $pdf->Cell(4, 1, "", 0, 0);
             $pdf->Cell(20, 1, "Observaciones: ", 0, 0);
             $pdf->Cell(83, 1, " " . wordwrap(utf8_decode($row3[5])), 0, 0);
             $pdf->Line(35, 84, 200, 84);
             $pdf->Cell(1, 1, "", 0, 1);
             $pdf->Ln(8);
 
-
-            $pdf->Cell(5, 5, "", 0, 0);
+            $pdf->Cell(4, 5, "", 0, 0);
             $pdf->Cell(24, -7, "Motivo de consulta: ", 0, 0);
             $pdf->Cell(73, -7, " " . wordwrap(utf8_decode($row3[6])), 0, 0);
             $pdf->Line(40, 89, 200, 89);
             $pdf->Ln(10);
 
-            $pdf->Cell(5, 5, "", 0, 0);
+            $pdf->Cell(4, 5, "", 0, 0);
             $pdf->Cell(30, -17, "Sintomas Astenopticos: ", 0, 0);
+
             $pdf->Cell(58, -17, " " . wordwrap(utf8_decode($row3[8])), 0, 1);
             $pdf->Line(45, 94, 200, 94);
             $pdf->Ln(15);
@@ -190,14 +189,16 @@ if (isset($_POST['imprimir'])) {
 
 
             $pdf->SetFont('Arial', 'B', '8');
-            $pdf->Cell(180, 5, "Examen Externo / Medios Transparentes / Fondo de Ojo:", 0, 1, 'C');
+            $pdf->Cell(180, 5, "EXAMEN EXTERNO:", 0, 1, 'C');
             $pdf->SetFont('Arial', '', '8');
             $pdf->Ln(3);
 
+            $pdf->SetFont('Arial', 'B', '8');
             $pdf->Cell(5, 5, "", 0, 0);
             $pdf->Cell(170, 5, "Cornea", 0, 1, 'C');
             $pdf->Cell(50, 5, "", 0, 0);
             $pdf->Cell(-10, -5, " ", 0, 0);
+            $pdf->SetFont('Arial', '', '8');
             $pdf->Cell(35, -5, " " . wordwrap(utf8_decode($row4[0])), 0, 0, 'C');
             $pdf->Line(50, 111, 85, 111);
             $pdf->Cell(30, -5, " ", 0, 0);
@@ -205,10 +206,12 @@ if (isset($_POST['imprimir'])) {
             $pdf->Line(115, 111, 152, 111);
             $pdf->Ln(8);
 
+            $pdf->SetFont('Arial', 'B', '8');
             $pdf->Cell(5, 5, "", 0, 0);
             $pdf->Cell(170, 5, "Cristalino", 0, 1, 'C');
             $pdf->Cell(50, 5, "", 0, 0);
             $pdf->Cell(-10, -5, " ", 0, 0);
+            $pdf->SetFont('Arial', '', '8');
             $pdf->Cell(35, -5, " " . wordwrap(utf8_decode($row4[2])), 0, 0, 'C');
             $pdf->Line(50, 120, 85, 120);
             $pdf->Cell(30, -5, " ", 0, 0);
@@ -217,10 +220,12 @@ if (isset($_POST['imprimir'])) {
 
             $pdf->Ln(8);
 
+            $pdf->SetFont('Arial', 'B', '8');
             $pdf->Cell(5, 5, "", 0, 0);
             $pdf->Cell(170, 5, "FO", 0, 1, 'C');
             $pdf->Cell(50, 5, "", 0, 0);
             $pdf->Cell(-10, -5, " ", 0, 0);
+            $pdf->SetFont('Arial', '', '8');
             $pdf->Cell(35, -5, " " . wordwrap(utf8_decode($row4[4])), 0, 0, 'C');
             $pdf->Line(50, 129, 85, 129);
             $pdf->Cell(30, -5, " ", 0, 0);
@@ -409,18 +414,14 @@ if (isset($_POST['imprimir'])) {
             $pdf->Ln(4);
 
             if ($row2 = mysqli_fetch_row($sql2)) {
-              $pdf->Cell(5, 5, "", 0, 0);
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->Cell(4, 5, "", 0, 0);
               $pdf->Cell(19, 5, "Diagnostico: ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
               $pdf->Cell(105, 5, " " . wordwrap(utf8_decode($row2[0])), 0, 0);
               $pdf->Line(34, 258, 200, 258);
 
-              $pdf->Line(150, 264, 200, 264);
-              $pdf->SetFont('Arial', 'B', '7');
-              $pdf->Ln(15);
-              $pdf->Cell(150, 2, "", 0, 0);
-              $pdf->Cell(19, 2, "Dr. ", 0, 0);
-              $pdf->Cell(1, 2, " ", 0, 0);
-              $pdf->Cell(19, 2, "Codigo ", 0, 0);
+
 
               $pdf->Ln(1);
 
@@ -482,345 +483,164 @@ if (isset($_POST['imprimir'])) {
 
 
                 $pdf->SetFont('Arial', 'B', '8');
-                $pdf->SetXY(145, 247);
+                $pdf->SetXY(145, 249);
                 $pdf->Cell(40, 7, "Distancia requerida para ver de cerca: ", 0, 0, 'C');
-                $pdf->SetXY(190, 248);
+                $pdf->SetXY(190, 250);
+                $pdf->SetFont('Arial', '', '8');
                 $pdf->Cell(10, 5, $campo5['distancia_vista'], 0, 0, 'C');
+
+                $pdf->SetXY(13, 269.5);
+                $pdf->SetFont('Arial', '', '12');
+                $pdf->SetTextColor(192, 57, 43);
+                $pdf->Cell(160, 5, "", 0, 0);
+                $pdf->Cell(9, 7, wordwrap(utf8_decode("Nº: ")), 0, 0);
+                $pdf->Cell(52, 7, " " . $row[0], 0, 0);
               }
+
+              $pdf->AddPage();
+
+              $pdf->SetFont('Arial', '', '15');
+
+              $pdf->SetTitle("OPTICAS MUNKEL");
+
+              $pdf->SetTextColor(192, 57, 43);
+              $pdf->SetTextColor('0', '0', '0');
+
+              $pdf->Cell(162, 5, "", 0, 0);
+              $pdf->Cell(58, 5, " " . str_replace('-', '/', date('d/m/Y', strtotime($row[1]))), 0, 1, 'L');
+              $pdf->SetFont('Arial', '', '8');
+
+              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\munke.png', 10, 2, 35, 20, 'PNG');
+
+              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\Zeiss-Logo.png', 43, 1, 35, 20, 'PNG');
+
+
+              $pdf->Ln(10);
+              $pdf->Line(10, 25, 200, 25);
+
+              $pdf->Ln(15);
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(85, 22);
+              $pdf->Cell(20, 20, "REGISTRO FINAL: ", 0, 0);
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(4, 30);
+              $pdf->Cell(20, 20, "NOMBRE DEL PACIENTE: ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(42, 39.5);
+              $pdf->Cell(88, 1, " " . strtoupper(wordwrap(utf8_decode($row[2]))), 0, 0);
+              $pdf->Line(43, 42, 200, 42);
+            
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(4, 40);
+              $pdf->Cell(20, 20, "No.IDENTIFICACION: ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(35, 49.5);
+              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($row[7])), 0, 0);
+              $pdf->Line(36, 52, 200, 52);
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(4, 50);
+              $pdf->Cell(20, 20, "No.TELEFONICO: ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(31, 59.5);
+              $pdf->Cell(88, 1, " " . $row[4], 0, 1);
+              $pdf->Line(32, 62, 200, 62);
+
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(4, 60);
+              $pdf->Cell(20, 20, "SUCURSAL: ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(23, 69.5);
+              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode(str_replace('_', ' ', strtoupper($row[10])))), 0, 1);
+              $pdf->Line(24, 72, 200, 72);
+
+
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(4, 70);
+              $pdf->Cell(20, 20, "NOMBRE DEL OPTOMETRISTA: ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(50, 79.5);
+              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($row5[1])), 0, 0);
+              $pdf->Line(51, 82, 200, 82);
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(4, 80);
+              $pdf->Cell(20, 20, "CODIGO: ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(18, 89.5);
+              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($row5[0])), 0, 0);
+              $pdf->Line(19, 92, 200, 92);
+
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(4, 90);
+              $pdf->Cell(20, 20, "ARO:  ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(16, 99.5);
+              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($campo['aro'])) . "-" . ($row6[0]), 0, 0);
+              $pdf->Line(17, 102, 200, 102);
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(4, 100);
+              $pdf->Cell(20, 20, "LENTES:  ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(20, 109.5);
+              $pdf->Cell(88, 1, " " . strtoupper(wordwrap(utf8_decode($campo['lentes']))), 0, 0);
+              $pdf->Line(21, 112, 200, 112);
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(4, 110);
+              $pdf->Cell(20, 20, "TRATAMIENTO:  ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(27, 119.5);
+              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($campo['ar_ultra'])), 0, 0);
+              $pdf->Line(28, 122, 200, 122);
+
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(30, 230);
+              $pdf->Cell(20, 20, "FIRMA PACIENTE:  ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(27, 99.5);
+
+              $pdf->Line(20, 264, 70, 264);
+              $pdf->SetFont('Arial', 'B', '7');
+              $pdf->Ln(15);
+              $pdf->Cell(20, 2, "", 0, 0);
+
+              $pdf->SetFont('Arial', 'B', '8.5');
+              $pdf->SetXY(165, 230);
+              $pdf->Cell(20, 20, "FIRMA DR:  ", 0, 0);
+              $pdf->SetFont('Arial', '', '8.5');
+              $pdf->SetXY(27, 99.5);
+
+              $pdf->Line(150, 264, 200, 264);
+              $pdf->SetFont('Arial', 'B', '7');
+              $pdf->Ln(15);
+              $pdf->Cell(150, 2, "", 0, 0);
+
               $pdf->SetXY(13, 269.5);
               $pdf->SetFont('Arial', '', '12');
               $pdf->SetTextColor(192, 57, 43);
               $pdf->Cell(160, 5, "", 0, 0);
               $pdf->Cell(9, 7, wordwrap(utf8_decode("Nº: ")), 0, 0);
               $pdf->Cell(52, 7, " " . $row[0], 0, 0);
-
-              $pdf->SetXY(132, 145);
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\air.png', 10, 249, 40, 28, 'PNG');
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\trans.png', 14, 270, 30, 12, 'PNG');
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\xpe.png', 57, 258, 30, 12, 'PNG');
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\fre.png', 57, 270, 30, 12, 'PNG');
-
-
-              $pdf->AddPage();
-
-
-
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\trans.png', 170, 5, 30, 12, 'PNG');
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\munke2.png', 10, -5, 35, 32, 'PNG');
-
-
-              $pdf->SetFillColor(150, 191, 255);
-              $pdf->SetDrawColor(150, 191, 255);
-              $pdf->SetXY(5, 25);
-              $pdf->SetTextColor(255, 255, 255);
-              $pdf->Cell(45, 10, "LIFE", 1, 0, 'C', true);
-
-              $pdf->SetXY(57, 25);
-              $pdf->Cell(45, 10, "ADVANCED", 1, 0, 'C', true);
-
-              $pdf->SetXY(108, 25);
-              $pdf->Cell(45, 10, "PREMIUM", 1, 0, 'C', true);
-
-              $pdf->SetXY(160, 25);
-              $pdf->Cell(45, 10, "INFINITY", 1, 0, 'C', true);
-              $pdf->SetTextColor(0, 0, 0);
-
-              //INICIO PRIMERA TABLA 
-              //Primera Parte Primera Tabla
-              $pdf->SetXY(5, 36);
-              $pdf->Cell(45, 59, "", 1, 0, 'C');
-
-              $pdf->SetFont('Arial', 'b', '8');
-              $pdf->SetXY(7, 36);
-              $pdf->MultiCell(40, 4, utf8_decode("Lentes progresivos free form, hechos con tecnologia digital Alemana de alta definicion. Cada lente es unico, con estructura personalizada para su estilo de vida"), 0, 'C');
-
-
-              $pdf->SetFont('Arial', 'b', '10');
-              $pdf->SetXY(7.5, 64);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("119,800")), 0, 0, 'C');
-
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\multi-view.jpg', 10, 72, 35, 22, 'JPG');
-
-
-              //Segunda Parte Primera Tabla
-              $pdf->SetXY(5, 96);
-              $pdf->Cell(45, 45, "", 1, 0, 'C');
-
-              $pdf->SetXY(7.5, 94);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("Personalización")), 0, 0, 'C');
-
-              $pdf->SetFont('Arial', 'b', '8');
-              $pdf->SetXY(7.5, 104);
-              $pdf->MultiCell(40, 4, utf8_decode("El angulo pantosópico, panoramico y la distancia al vertice proporcionan mas satisfacción visual en su estilo de vida"), 0, '');
-
-              $pdf->SetXY(7.5, 128);
-              $pdf->Cell(45, 4, utf8_decode("* BALANCE (Todo uso)"), 0, '');
-              $pdf->SetXY(7.5, 132);
-              $pdf->Cell(45, 4, utf8_decode("* LEJOS (Conducción)"), 0, '');
-              $pdf->SetXY(7.5, 136);
-              $pdf->Cell(45, 4, utf8_decode("* INTER CERCA (Vida digital)"), 0, '');
-              //Tercera Parte Primera Tabla
-              $pdf->SetFont('Arial', 'b', '11');
-
-              $pdf->SetXY(5, 142);
-              $pdf->Cell(97, 24, "", 1, 0, 'C');
-
-              $pdf->SetXY(2, 140);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("Proteccion")), 0, 0, 'C');
-
-              $pdf->SetFont('Arial', 'b', '10');
-
-              $pdf->SetXY(-213, 146);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("Green")), 0, 0, 'C');
-
-              $pdf->SetXY(-180, 146);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("Ultra Blue")), 0, 0, 'C');
-
-
-              $pdf->SetXY(-213, 154);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("Green")), 0, 0, 'C');
-
-              $pdf->SetXY(-180, 154);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("Ultra Blue")), 0, 0, 'C');
-
-
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\multi-view.jpg', 62, 144, 38, 20, 'JPG');
-
-              //FINAL PRIMERA TABLA 
-
-              //INICIO SEGUNDA TABLA 
-              $pdf->SetXY(57, 36);
-              $pdf->Cell(45, 59, "", 1, 0, 'C');
-
-              $pdf->SetFont('Arial', 'b', '8');
-              $pdf->SetXY(60, 36);
-              $pdf->MultiCell(40, 4, utf8_decode("Diseño avanzado y optimizado para mas comodidad en su estilo de vida digital. Personalizada para una mejor expericencia en el uso de dispositivos digitales"), 0, 'C');
-
-
-              $pdf->SetFont('Arial', 'b', '10');
-              $pdf->SetXY(59.5, 64);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("139,800")), 0, 0, 'C');
-
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\multi-view.jpg', 62, 72, 35, 22, 'JPG');
-
-
-              //Segunda Parte Segunda Tabla
-              $pdf->SetXY(57, 96);
-              $pdf->Cell(45, 45, "", 1, 0, 'C');
-
-              $pdf->SetXY(60, 94);
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\baw.png', 64.5, 106, 30, 26, 'PNG');
-
-
-
-              $pdf->SetXY(108, 142);
-              $pdf->Cell(45, 24, "", 1, 0, 'C');
-
-
-
-
-
-              //FINAL SEGUNDA TABLA
-
-
-
-
-              //INICIO TERCERA TABLA
-              $pdf->SetXY(108, 36);
-              $pdf->Cell(45, 59, "", 1, 0, 'C');
-
-              $pdf->SetFont('Arial', 'b', '8');
-              $pdf->SetXY(110, 36);
-              $pdf->MultiCell(40, 4, utf8_decode("Diseño con estructura unica, reduce el efecto balancero y el desenfoque periferico ampliando las zonas de lejos mas intermedia y cerca para mas confort "), 0, 'C');
-
-
-              $pdf->SetFont('Arial', 'b', '10');
-              $pdf->SetXY(110, 64);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("168,800")), 0, 0, 'C');
-
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\multi-view.jpg', 113, 72, 35, 22, 'JPG');
-
-
-              //Segunda Parte Tercera Tabla
-              $pdf->SetXY(108, 96);
-              $pdf->Cell(45, 45, "", 1, 0, 'C');
-
-              $pdf->SetXY(110, 131);
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\libro.jpg', 111.5, 102, 38, 30, 'JPG');
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("Anti Fatiga + AR Blue")), 0, 0, 'C');
-
-
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\premium.jpg', 110, 144, 40, 18, 'JPG');
-
-              $pdf->SetXY(110, 159);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("Anti Fatiga + AR Blue")), 0, 0, 'C');
-              //FINAL TERCERA TABLA 
-
-
-              //INICIO CUARTA TABLA
-              $pdf->SetXY(160, 36);
-              $pdf->Cell(45, 59, "", 1, 0, 'C');
-
-              $pdf->SetFont('Arial', 'b', '8');
-              $pdf->SetXY(162.5, 36);
-              $pdf->MultiCell(40, 4, utf8_decode("Diseño con estructura unica, reduce el efecto balancero y el desenfoque periferico ampliando las zonas de lejos mas intermedia y cerca para mas confort "), 0, 'C');
-
-
-              $pdf->SetFont('Arial', 'b', '10');
-              $pdf->SetXY(162.5, 64);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("198,800")), 0, 0, 'C');
-
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\multi-view.jpg', 164.5, 72, 35, 22, 'JPG');
-
-
-              //Segunda Parte Cuarta Tabla
-              $pdf->SetXY(160, 96);
-              $pdf->SetTextColor(255, 255, 255);
-              $pdf->Cell(45, 10, "INNOVATIONS", 1, 0, 'C', true);
-              $pdf->SetTextColor(0, 0, 0);
-
-              $pdf->SetXY(160, 107);
-              $pdf->Cell(45, 59, "", 1, 0, 'C');
-
-
-
-              $pdf->SetFont('Arial', 'b', '8');
-              $pdf->SetXY(162, 108);
-              $pdf->MultiCell(40, 4, utf8_decode("Diseño con estructura unica, reduce el efecto balancero y el desenfoque periferico ampliando las zonas de lejos mas intermedia y cerca para mas confort "), 0, 'C');
-
-              $pdf->SetFont('Arial', 'b', '10');
-              $pdf->SetXY(162.5, 135);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("350,000")), 0, 0, 'C');
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\multi-view.jpg', 164, 143, 35, 22, 'JPG');
-
-
-
-              $pdf->SetXY(5, 168);
-              $pdf->Cell(200, 20, "", 1, 0, 'C', true);
-
-
-              $pdf->SetTextColor(255, 255, 255);
-              $pdf->SetFont('Arial', 'b', '8');
-
-              $pdf->SetXY(10, 168);
-              $pdf->Cell(40, 20, "MK DIGITAL EASY FIT", 1, 0, 'C');
-
-
-              $pdf->SetXY(60, 168);
-              $pdf->Cell(40, 20, "MK DIGITAL ADAPTATIVE", 1, 0, 'C');
-
-              $pdf->SetXY(110, 168);
-              $pdf->Cell(40, 20, "MK DIGITAL ACTIVE", 1, 0, 'C');
-
-              $pdf->SetXY(155, 168);
-              $pdf->Cell(40, 20, "MK DIGITAL EXPERIENCE", 1, 0, 'C');
-
-
-
-
-              $pdf->SetDrawColor(255, 255, 255);
-              $pdf->SetLineWidth(0.6);
-
-              $pdf->Line(53, 185, 53, 172);
-
-              $pdf->Line(106, 185, 106, 172);
-
-              $pdf->Line(150, 185, 150, 172);
-
-
-
-              $pdf->SetXY(10, 178);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("39,800")), 0, 0, 'C');
-
-              $pdf->SetXY(60, 178);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("59,800")), 0, 0, 'C');
-
-              $pdf->SetXY(110, 178);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("79,800")), 0, 0, 'C');
-
-              $pdf->SetXY(156, 178);
-              $pdf->Cell(40, 10, wordwrap(utf8_decode("98,800")), 0, 0, 'C');
-
-
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\1.png', -35, 185, 150, 60, 'PNG');
-
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\2.png', 30, 185, 150, 60, 'PNG');
-
-              $pdf->Image('C:\Users\CCTVmunkel\Desktop\XAMP 8\htdocs\Optometristas_Php\imgs\3.png', 88, 185, 150, 60, 'PNG');
-
-
-              $pdf->Line(10, 180, 200, 180);
-
-              $pdf->SetFont('Arial', '', '12');
-              $pdf->SetTextColor(0, 0, 0);
-              $pdf->SetLineWidth(0.2);
-              $pdf->SetDrawColor(0, 0, 0);
-
-
-              $pdf->SetFont('Arial', '', '8.5');
-              $pdf->SetXY(5, 197);
-              $pdf->Cell(20, 20, "Aro: ", 0, 0);
-              $pdf->SetFont('Arial', '', '8.5');
-              $pdf->SetXY(12, 206.5);
-              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($campo['aro'])) . "-" . ($row6[0]), 0, 0);
-
-              $pdf->SetXY(5, 207);
-              $pdf->Cell(20, 20, "Lentes: ", 0, 0);
-              $pdf->SetXY(17, 216.5);
-              $pdf->Cell(88, 1, " " . strtoupper(wordwrap(utf8_decode($campo['len']))), 0, 0);
-
-
-              $pdf->SetXY(5, 217);
-              $pdf->Cell(20, 20, "Tratamientos: ", 0, 0);
-              $pdf->SetXY(20.5, 226.5);
-              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($campo['tra'])), 0, 0);
-
-
-              $pdf->SetFont('Arial', '', '8.5');
-
-              $pdf->SetXY(5, 227);
-              $pdf->Cell(20, 20, "NOMBRE DEL PACIENTE: ", 0, 0);
-              $pdf->SetXY(42, 236.5);
-              $pdf->Cell(88, 1, " " . strtoupper(wordwrap(utf8_decode($row[2]))), 0, 0);
-              $pdf->Line(42, 239, 200, 239);
-
-              $pdf->SetXY(5, 237);
-              $pdf->Cell(20, 20, "FIRMA: ", 0, 0);
-              $pdf->Line(17, 249, 100, 249);
-
-              $pdf->SetXY(100, 237);
-              $pdf->Cell(20, 20, "No.IDENTIFICACION: ", 0, 0);
-              $pdf->SetXY(129, 246.5);
-              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($row[7])), 0, 0);
-              $pdf->Line(130, 249, 200, 249);
-
-              $pdf->SetXY(5, 247);
-              $pdf->Cell(20, 20, "NOMBRE DEL OPTOMETRISTA: ", 0, 0);
-              $pdf->SetXY(50, 256.5);
-              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($row5[1])), 0, 0);
-              $pdf->Line(51, 259, 200, 259);
-
-              $pdf->SetXY(5, 255);
-              $pdf->Cell(20, 20, "FIRMA: ", 0, 0);
-              $pdf->Line(16, 267, 100, 267);
-
-              $pdf->SetXY(100, 255);
-              $pdf->Cell(20, 20, "CODIGO: ", 0, 0);
-              $pdf->SetXY(114, 264.5);
-              $pdf->Cell(88, 1, " " . wordwrap(utf8_decode($row5[0])), 0, 0);
-              $pdf->SetXY(114, 264.5);
-
-              $pdf->Line(115, 267, 200, 267);
             }
           }
         }
       }
     }
-    $pdf->Output('');
+    $pdf->Output('D');
   }
 
   ob_end_flush();
 }
+
 
 
 
@@ -837,7 +657,6 @@ if (isset($_POST['imprimir'])) {
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.csss">
-  <link rel="stylesheet" href="../css/css2.css">
 
 </head>
 <style>
@@ -1484,12 +1303,12 @@ Tabla distancias css
       <div class="form-row">
         <div class="form-group col-md-6 first">
           <label for="nombre" class="lblnom">Nombre Completo<span>*</span></label>
-          <input type="text" id="nombre" name="nombre" class="nom" required size="35" onkeypress="nextFocus('nombre', 'cedpaciente2')" value=<?php echo MantenerDatos("nombre") ?>>
+          <input type="text" id="nombre" name="nombre" maxlength="40" class="nom" required size="35" onkeypress="nextFocus('nombre', 'cedpaciente2')" value=<?php echo MantenerDatos("nombre") ?>>
           <div id="fname_error" class="val_error"></div>
         </div>
         <div class="form-group col-md-6 first">
           <label for="inputFirstName" class="lblced">Cedula<span>*</span></label>
-          <div class="age"><input type="text" id="cedpaciente2" name="cedpaciente2" class="ced" required size="12" value=<?php echo MantenerDatos("cedpaciente2") ?>></div>
+          <div class="age"><input type="text" id="cedpaciente2" maxlength="10" name="cedpaciente2" class="ced" required size="12" value=<?php echo MantenerDatos("cedpaciente2") ?>></div>
           <div id="fname_error" class="val_error"></div>
         </div>
 
@@ -1656,9 +1475,9 @@ Tabla distancias css
                        </div>
                    </div>
                    </div>
-
-
-
+                       
+                 
+                   
                    
             <div id="content2" class="content">
             <div class="container">
@@ -2009,7 +1828,7 @@ Tabla distancias css
                                      </div>
                                      <div class="form-row">
                                        <div class="form-group col-md-6 first">
-                                            <label for="inputFirstName" id="lblaro">AR Ultra<span>*</span></label>
+                                            <label for="inputFirstName" id="lblaro">Tratamientos<span>*</span></label>
                                             <input type="text" id="ar_ultra" name="ar_ultra" required size="93" style="text-align: center;" value="' . $row2[17] . '" readonly>
                                             <div id="fname_error" class="val_error"></div>
                                           </div>   
@@ -2070,7 +1889,7 @@ Tabla distancias css
     }
 
 
-    ?>
+  ?>
 </body>
 
 </html>
